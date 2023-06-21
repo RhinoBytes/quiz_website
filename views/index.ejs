@@ -18,7 +18,35 @@
 </head>
 
 <body>
-  <h1>Have fun! 🥔</h1>
+  <body>
+    <h1>Welcome to the Quiz App!</h1>
+
+    <h2>Public Quizzes</h2>
+    <ul class="quiz-list">
+      <!-- List of quizzes would be populated here -->
+      <li>
+        <a href="#">
+          <h3>Quiz Title 1</h3>
+          <p>Created by User 1</p>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <h3>Quiz Title 2</h3>
+          <p>Created by User 2</p>
+        </a>
+      </li>
+      <!-- ... -->
+    </ul>
+
+    <h2>Create a new Quiz</h2>
+    <form action="/create-quiz" method="post">
+      <label for="quiz-title">Quiz Title:</label><br>
+      <input type="text" id="quiz-title" name="quiz-title"><br>
+      <label for="quiz-desc">Quiz Description:</label><br>
+      <textarea id="quiz-desc" name="quiz-desc"></textarea><br>
+      <input type="submit" value="Create Quiz">
+    </form>
 </body>
 
 </html>
