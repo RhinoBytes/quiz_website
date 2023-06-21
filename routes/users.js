@@ -10,6 +10,21 @@ const router  = express.Router();
 
 router.get('/', (req, res) => {
   res.render('users');
-}); 
+});
 
 module.exports = router;
+
+
+
+
+app.get('/') <---- this is to render the homepage
+
+
+app.get('/api/quiz) <--- this will return a bunch of public quiz
+
+
+
+app.post('/createQuiz') <---- Submit the form
+
+
+app.get('/createQuiz') <--- render new Quiz page with a form in it

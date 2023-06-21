@@ -55,22 +55,28 @@ User Scenarios
 - When he chooses to make the quiz unlisted or private,
 - Then the quiz is marked as private, preventing it from being displayed on the home page or in the list of public quizzes.
 
-# Scenario 7: Doug wants to make changes to one of his created quizzes.
+# Scenario 7: Doug visits the website without logging in.
+- When: Doug explores the home page and finds an interesting public quiz.
+- Then:Doug clicks on the quiz's title and is directed to the quiz page.
+- Doug reads the questions and provides his answers.
+- After completing the quiz, Doug sees his results and score.
+
+
+STRETCH 
+# Scenario 8: Doug wants to make changes to one of his created quizzes.
 - When: Doug logs into his account and navigates to the "My Quizzes" section.
 - Then:Doug selects the quiz he wants to edit.
 - Doug clicks on the "Edit Quiz" button and makes the necessary modifications to the quiz details, questions, or answer choices.
 - Doug saves the changes, and the updated quiz is reflected.
 
-# Scenario 8: Doug decides to remove one of his quizzes from the website.
+STRETCH 
+# Scenario 9: Doug decides to remove one of his quizzes from the website.
 - When: Doug logs into his account and goes to the "My Quizzes" section.
 - Then:Doug selects the quiz he wants to delete.
 - Doug clicks on the "Delete Quiz" button, confirms the action, and the quiz is permanently removed from the website.
 
-# Scenario 9: Doug visits the website without logging in.
-- When: Doug explores the home page and finds an interesting public quiz.
-- Then:Doug clicks on the quiz's title and is directed to the quiz page.
-- Doug reads the questions and provides his answers.
-- After completing the quiz, Doug sees his results and score.
+
+STRETCH
 # Scenario 10: Doug wants to find quizzes on a specific topic or with specific characteristics.
 - When: Doug visits the home page or the quizzes section of the website.
 - Then:Doug uses sorting options (such as by popularity or date) or filter options (such as by category or difficulty level) to refine the displayed quizzes.
