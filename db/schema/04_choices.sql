@@ -1,0 +1,8 @@
+
+DROP TABLE IF EXISTS choices CASCADE;
+CREATE TABLE questions (
+  id SERIAL PRIMARY KEY NOT NULL,
+  answer VARCHAR(255) NOT NULL,
+  is_correct_answer BOOLEAN DEFAULT TRUE,
+  question_id INTEGER REFERENCES questions(id) ON DELETE CASCADE
+);
