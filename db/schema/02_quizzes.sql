@@ -7,5 +7,5 @@ CREATE TABLE quizzes (
   description VARCHAR(255) NOT NULL,
   visibility boolean,
   user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
-  created_at DATE,
+  created_at DATE
 );
