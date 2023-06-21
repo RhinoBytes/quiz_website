@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Users</title>
+  <title>Attempt the quiz</title>
 
   <meta charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
@@ -18,9 +18,26 @@
 </head>
 
 <body>
-  <h1>Users</h1>
-  <button id="fetch-users">Fetch Users via AJAX</button>
-  <ul id="users"></ul>
+  <h1>Quiz</h1>
+
+  <article id="question">Which province is known for its maple syrup production?</article>
+
+  <section id="options">
+    <input type="radio" name="answer" id="option1">
+    <label for="option1">Quebec</label><br>
+
+    <input type="radio" name="answer" id="option2">
+    <label for="option2">Ontario</label><br>
+
+    <input type="radio" name="answer" id="option3">
+    <label for="option3">Alberta</label><br>
+
+    <input type="radio" name="answer" id="option4">
+    <label for="option4">Manitoba</label><br>
+  </section>
+
+  <button>Submit</button>
+
 </body>
 
 </html>
