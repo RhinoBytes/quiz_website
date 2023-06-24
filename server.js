@@ -32,8 +32,8 @@ const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 
-const createQuizRoutes = require('./routes/create-quiz'); // to serve the view
-const createQuizApiRoutes = require('./routes/create-quiz-api'); // to handle form submission
+const createQuizRoutes = require('./routes/create-quiz');
+const createQuizApiRoutes = require('./routes/create-quiz-api');
 
 
 // Mount all resource routes
@@ -43,21 +43,23 @@ app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
 // Note: mount other resources here, using the same pattern above
-app.use('/create_quiz', createQuizRoutes);
-app.use('/api/create_quiz', createQuizApiRoutes); // you may adjust the path based on your needs
 
+// routes for create_quiz
+app.use('/create-quiz', createQuizRoutes);
+app.use('/api/create-quiz', createQuizApiRoutes);
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 
-app.get('/', (req, res) => {
-  res.render('index');
-});
 
+// get for create_quiz
 app.get('/create_quiz', (req, res) => {
   res.render('create_quiz');
 });
 
+app.get('/', (req, res) => {
+  res.render('index');
+});
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
 });

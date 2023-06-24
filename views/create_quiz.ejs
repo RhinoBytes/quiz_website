@@ -16,10 +16,11 @@
     <script defer src="/scripts/users.js"></script>
   </head>
 
+
   <body>
     <section>
       <h2>Create a new Quiz</h2>
-      <form action="/create-quiz" method="post">
+      <form action="/create_quiz" method="post">
         <label for="quiz-title">Quiz Title:</label><br />
         <input type="text" id="quiz-title" name="quiz-title" /><br />
         <label for="quiz-desc">Quiz Description:</label><br />
@@ -33,7 +34,6 @@
           id="question-<%= i %>"
           name="question-<%= i %>"
         /><br />
-
         <% for(var j=1; j<=4; j++) { %>
         <label for="answer-<%= i %>-<%= j %>">Answer <%= j %>:</label>
         <input
