@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Create Quiz</title>
+
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+    <link rel="stylesheet" href="/vendor/border-box.css" />
+    <link rel="stylesheet" href="/styles/main.css" />
+    <link rel="stylesheet" href="/styles/layout.css" />
+
+    <script src="/vendor/jquery-3.0.0.js"></script>
+    <script defer src="/scripts/users.js"></script>
+  </head>
+
+  <body>
+    <section>
+      <h2>Create a new Quiz</h2>
+      <form action="/create-quiz" method="post">
+        <label for="quiz-title">Quiz Title:</label><br />
+        <input type="text" id="quiz-title" name="quiz-title" /><br />
+        <label for="quiz-desc">Quiz Description:</label><br />
+        <textarea id="quiz-desc" name="quiz-desc"></textarea><br />
+
+        <% for(var i=1; i<=5; i++) { %>
+        <!-- Question <%= i %> -->
+        <label for="question-<%= i %>">Question <%= i %>:</label><br />
+        <input
+          type="text"
+          id="question-<%= i %>"
+          name="question-<%= i %>"
+        /><br />
+
+        <% for(var j=1; j<=4; j++) { %>
+        <label for="answer-<%= i %>-<%= j %>">Answer <%= j %>:</label>
+        <input
+          type="text"
+          id="answer-<%= i %>-<%= j %>"
+          name="answer-<%= i %>-<%= j %>"
+        /><br />
+        <% } %> <% } %>
+
+        <input type="checkbox" id="private-check" name="private-check" />
+        <label for="private-check">Make quiz private</label><br />
+
+        <input type="submit" value="Create Quiz" />
+      </form>
+    </section>
+  </body>
+</html>
