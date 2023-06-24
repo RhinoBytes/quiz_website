@@ -18,9 +18,19 @@
 </head>
 
 <body>
-  <h1>Users</h1>
-  <button id="fetch-users">Fetch Users via AJAX</button>
-  <ul id="users"></ul>
+ <nav>
+
+ </nav>
+ <% if (quizzes && quizzes.length > 0) { %>
+  <% quizzes.forEach((quiz) => { %>
+    <div>
+      <h1><%= quiz.title %></h1>
+      <p>Description: <%= quiz.description %></p>
+    </div>
+  <% }) %>
+<% } else { %>
+  <p>No quizzes found.</p>
+<% } %>
 </body>
 
 </html>
