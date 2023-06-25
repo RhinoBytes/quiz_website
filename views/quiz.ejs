@@ -41,7 +41,7 @@
               <% const choice = choices[j]; %>
               <% if (choice.question_id === question.id) { %>
                   <!-- Choice options for Question <%= i %> -->
-                <input type="checkbox" name="answers[<%= i %>]" id="option<%= j + 1 %>-<%= i %>" value="<%= choice.answer %>">
+                <input class="allOptions" type="checkbox" name="answers[<%= i %>]" id="option<%= j + 1 %>-<%= i %>" value="<%= choice.answer %>">
                 <label class="choice-button" for="option<%= j + 1 %>-<%= i %>"><%= choice.answer %></label>
               <% } %>
             <% } %>
