@@ -67,7 +67,7 @@ router.get('/:id', (req, res) => {
 
 router.post('/:id', (req, res) => {
   const quizId = req.params.id;
-  const userId = req.session.userId; // Assuming user ID is stored in the session
+  const userId = req.session.user_id;// Assuming user ID is stored in the session
 console.log("+++++++++++++++++++++++++", req.body);
   // Fetch the correct answers for the quiz
   // const correctAnswersQuery = `
@@ -143,7 +143,7 @@ router.get('/result/:id', (req, res) => {
     .then(results => {
       console.log("_________________________",results);
       const result = results.rows[0]
-      res.render('quiz_results', { quizId: result["quiz_id"], score: result["score"], userId: result["user_id"] });
+      res.render('quiz_results', { quizId: result["quiz_id"], score: result["score"], userId: result["user_id"]});
   })
   .catch(error => {
     console.error('Error fetching the result:', error);

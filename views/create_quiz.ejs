@@ -7,6 +7,7 @@
   <meta charset="UTF-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   <script src="/vendor/jquery-3.0.0.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
@@ -18,8 +19,10 @@
   <link rel="stylesheet" href="/styles/nav.css" />
   <link rel="stylesheet" href="/styles/footer.css" />
 
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
   <script defer src="/scripts/nav.js"></script>
-
+  <script defer src="/scripts/create-quiz.js"></script>
 </head>
 
 <body>
@@ -29,9 +32,13 @@
     <!-- Modal content -->
     <div id="modal-box" class="modal-content">
       <span id="modal-close-button" class="close">&times;</span>
-      <p>Type in your friends email to share this quiz!</p>
-      <input type="email" id="modal-email-input" required>
+      <p>Quiz Created!
+        <p>Please enter your friend's email address to share this quiz, or click "Next" to experience your newly created quiz.</p>
+      <div class="modal-email">
+        <input type="email" id="modal-email-input" required>
       <button id="modal-submit-button">Submit</button>
+      </div>
+      <button id="modal-next-button">Next</button>
     </div>
   </div>
   <section id="quiz-box">
@@ -64,9 +71,7 @@
   </section>
 
 
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script>
-  <script defer src="/scripts/create-quiz.js"></script>
+
   <%- include('partials/_footer') %>
 </body>
 

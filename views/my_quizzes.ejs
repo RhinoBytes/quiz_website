@@ -27,21 +27,22 @@
 <body>
   <%- include('partials/_header') %>
  <div class="quiz-container">
+  Quizzes: <%= typeof quizzes %>
  <% if (quizzes && quizzes.length > 0) { %>
   <% quizzes.forEach((quiz) => { %>
-    <div class="quiz">
-      <form class="myQuizz">
-      <h1 class="title"><%= quiz.title %></h1>
-      <% if (attempts) { %>
-        <h4>Attempts: <%= attempts %></h4>
+     <div class="quiz">
+      <form class="myQuizz" action="/quizzes/<%= quiz.id %>" method="GET">
+        <h1 class="title"><%= quiz.title %></h1>
+        <% if (quiz.attempts) { %>
+          <h4>Attempts: <%= quiz.attempts %></h4>
         <% } %>
-      <% if (averagescore) { %>
-        <h4>Average Score: <%= averagescore %></h4>
+        <% if (quiz.averagescore) { %>
+          <h4>Average Score: <%= quiz.averagescore %></h4>
         <% } %>
-      <p>Description: <%= quiz.description %></p>
-      <button>Take Quiz</button>
-    </form>
-  </div>
+        <p>Description: <%= quiz.description %></p>
+        <button type="submit">Take Quiz</button>
+      </form>
+    </div>
   <% }) %>
 <% } else { %>
   <p>No quizzes found.</p>
