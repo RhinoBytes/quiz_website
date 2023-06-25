@@ -19,3 +19,12 @@ VALUES ('Canadian Province Quiz', 'Test your knowledge of Canadian provinces', t
 -- quiz 5
 INSERT INTO quizzes (title, description, visibility, user_id, created_at)
 VALUES ('Bird Quiz', 'Test your knowledge of birds', true, 2, '2023-06-21');
+
+--quiz 6
+INSERT INTO quizzes (title, description, visibility, user_id, created_at)
+VALUES ('Citizenship Quiz', 'Test your knowledge of Canada', true, 1, '2023-06-22');
+
+--quiz 7
+INSERT INTO quizzes (title, description, visibility, user_id, created_at)
+VALUES ('English Quiz', 'Test your knowledge of English', true, 1, '2023-06-23');
+

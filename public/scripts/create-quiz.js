@@ -23,8 +23,12 @@ $(document).ready(function() {
         type: 'POST',
         url: '/api/create-quiz',
         data: $('#quiz-output').serialize(),
-        success: function() {
-          showModalBox();
+        success: function(data) {
+          showModalBox(data.quizId); // Pass the quizId to the function
+        },
+        error: function() {
+          $('#error-message').text('Failed to create the quiz');
+          $('#error-message').show();
         }
       });
     }
@@ -35,26 +39,28 @@ $(document).ready(function() {
     $('#error-message').hide();
   });
 
-  function showModalBox() {
+  function showModalBox(quizId) {
     // Assuming 'quizUrl' is the URL of the quiz
-    var quizUrl = 'http://example.com/quiz';  // Replace this with actual quiz URL
+    var quizUrl = `http://localhost:8080/quizzes/${quizId}`;  // Replace this with actual quiz URL
 
     $('#quizUrl').val(quizUrl);  // Set the quiz URL in the modal
-    $('#myModal').show();  // Show the modal
+
+    $('#myModal').modal('show');  // Show the modal using Bootstrap's modal() method
 
     // Add event handler for modal box close button
     $('#modal-close-button').on('click', function() {
-      $('#myModal').hide();  // Hide the modal
+      $('#myModal').modal('hide');  // Hide the modal using Bootstrap's modal() method
     });
 
     // Add event handler for modal submit button
     $('#modal-submit-button').on('click', function() {
       var email = $('#modal-email-input').val();
       if (email) {
-        var mailto_link = 'mailto:' + email + '?subject=Quiz Link&body=' + quizUrl;
+        var mailto_link = 'mailto:' + email + '?subject=Quiz Link&body=' + `I just made a quiz, try it out and let me know what you think! ${quizUrl}`;
         window.location.href = mailto_link;
       }
-      $('#myModal').hide();  // Hide the modal
+      // Redirect to the created quiz page
+      window.location.href = quizUrl;
     });
   }
 });

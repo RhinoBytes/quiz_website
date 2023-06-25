@@ -2,51 +2,53 @@
 <html lang="en">
 
 <head>
-  <title>Home Page</title>
+  <title>Home</title>
 
   <meta charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <script src="/vendor/jquery-3.0.0.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/nav.css" />
+  <link rel="stylesheet" href="/styles/footer.css" />
 
-  <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/app.js"></script>
+
+  <script defer src="/scripts/users.js"></script>
+  <script defer src="/scripts/nav.js"></script>
+
 </head>
 
 <body>
-  <body>
-    <h1>Welcome to the Quiz App!</h1>
-
-    <h2>Public Quizzes</h2>
-    <ul class="quiz-list">
-      <!-- List of quizzes would be populated here -->
-      <li>
-        <a href="/quizzes/1">
-          <h3>Quiz Title 1</h3>
-          <p>Created by User 1</p>
-        </a>
-      </li>
-      <li>
-        <a href="/quizzes/2">
-          <h3>Quiz Title 2</h3>
-          <p>Created by User 2</p>
-        </a>
-      </li>
-      <!-- ... -->
-    </ul>
-
-    <h2>Create a new Quiz</h2>
-    <form action="/create-quiz" method="post">
-      <label for="quiz-title">Quiz Title:</label><br>
-      <input type="text" id="quiz-title" name="quiz-title"><br>
-      <label for="quiz-desc">Quiz Description:</label><br>
-      <textarea id="quiz-desc" name="quiz-desc"></textarea><br>
-      <input type="submit" value="Create Quiz">
+  <%- include('partials/_header') %>
+ <div class="quiz-container">
+ <% if (results && results.length > 0) { %>
+  <% results.forEach((quiz) => { %>
+    <div class="quiz">
+      <form class="myQuizz">
+      <h1 class="title"><%= quiz.title %></h1>
+      <% if (attempts) { %>
+        <h4>Attempts: <%= attempts %></h4>
+        <% } %>
+      <% if (quiz.averagescore) { %>
+        <h4>Average Score: <%= quiz.averagescore %></h4>
+        <% } else { %>
+          <h4>Average Score: No average found</h4>
+        <% } %>
+      <p>Description: <%= quiz.description %></p>
+      <button>Take Quiz</button>
     </form>
+  </div>
+  <% }) %>
+<% } else { %>
+  <p>No quizzes found.</p>
+<% } %>
+</div>
+<%- include('partials/_footer') %>
 </body>
-
 </html>
