@@ -1,12 +1,17 @@
 nav {
-  height: 120px;
+  height: 80px;
   background-color: #fca311;
   color: #ffffff;
   top: 0;
+  transition: height 0.1s ease;
 }
 
 .navbar-toggler {
   background-color: white;
+}
+
+.expanded {
+  overflow: visible;
 }
 
 /* Styles for desktop screens (1024px and above) */
