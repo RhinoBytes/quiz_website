@@ -5,7 +5,7 @@ const db = require('../db/queries/users');
 function processFormData(req) {
   const quizTitle = req.body['quiz-title'];
   const quizDesc = req.body['quiz-desc'];
-  const username = 'Doug';
+  const user = req.session.username;
 
   const questions = [];
   //
@@ -26,12 +26,12 @@ function processFormData(req) {
   const creationDate = new Date();
   const formattedDate = creationDate.toISOString().split('T')[0];
 
-  const isPrivate = req.body['private-check'] === 'on';
-
+  const isPrivate = req.body['private-check'] !== 'on';
+  console.log("process form data once")
   return {
     quizTitle,
     quizDesc,
-    username,
+    user,
     questions,
     formattedDate,
     isPrivate,
@@ -39,18 +39,18 @@ function processFormData(req) {
 }
 
 router.post('/', async (req, res) => {
-  console.log("error post");
+  console.log("insert start once")
   try {
     const {
       quizTitle,
       quizDesc,
-      username,
+      user,
       questions,
       formattedDate,
       isPrivate,
     } = processFormData(req);
 
-    const userId = await db.insertUser(username);
+    const userId = await db.insertUser(user);
     console.log('User inserted. UserID:', userId);
 
     const quizId = await db.insertQuiz(
@@ -72,6 +72,7 @@ router.post('/', async (req, res) => {
         console.log('Choice inserted:', question.answers[i], 'Is correct:', isCorrectAnswer);
       }
     }
+    console.log("inserted once")
     res.status(200).json({quizId});
 
   } catch (error) {

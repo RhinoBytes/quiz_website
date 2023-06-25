@@ -1,7 +1,7 @@
 $(document).ready(function() {
   $('#quiz-output').submit(function(event) {
     event.preventDefault();  // prevent form from submitting
-
+    console.log("jquery start once")
     var hasError = false;
 
     // check for errors
@@ -19,12 +19,14 @@ $(document).ready(function() {
       $('#error-message').show();
     } else {
       // if no errors, submit the form via AJAX then show the modal box
+      console.log("before ajax once")
       $.ajax({
         type: 'POST',
         url: '/api/create-quiz',
         data: $('#quiz-output').serialize(),
         success: function(data) {
           showModalBox(data.quizId); // Pass the quizId to the function
+          console.log("in ajax once")
         },
         error: function() {
           $('#error-message').text('Failed to create the quiz');

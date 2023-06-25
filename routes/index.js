@@ -1,11 +1,12 @@
 const express = require('express');
 const router = express.Router();
 const publicQuizzes = require('../db/queries/index');
+const { db } = require('../db/queries/my-quizzes');
 
 router.get('/', (req, res) => {
+  console.log(req.session);
   Promise.all([
     publicQuizzes.getPublicQuizzes(),
-    publicQuizzes.getPublicQuizAttempts()
   ])
     .then(([quizzes, attempts]) => {
       const promises = quizzes.map(quiz =>
@@ -16,8 +17,7 @@ router.get('/', (req, res) => {
       Promise.all(promises)
         .then(results => {
           const user = req.session.username;
-          console.log(user);
-          res.render('index', { results, attempts, user });
+          res.render('index', { results, attempts, user}); //here index is referring to index.ejs file
         })
         .catch(error => {
           // Handle the error appropriately
@@ -32,9 +32,7 @@ router.get('/', (req, res) => {
     });
 });
 
-router.post('/login', (req, res) => {
-  req.session.username = req.body.username; //query the database for user whose name matches req.body.user, if there is a match then set another session if its not there, then insert that in the database and pull the resulting id.
-  res.redirect('/')
-});
+
+
 
 module.exports = router;
