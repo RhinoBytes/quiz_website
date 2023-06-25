@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
-  <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/quiz.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/users.js"></script>
@@ -20,7 +20,8 @@
 </head>
 
 <body>
-  <h1>Quiz</h1>
+  <h1>Do your best</h1>
+  <section id="container">
 
   <form id="quiz-form" action="/quizzes/<%= quizId %>" method="POST">
     <div class="question-container">
@@ -34,17 +35,18 @@
               <% const choice = choices[j]; %>
               <% if (choice.question_id === question.id) { %>
                   <!-- Choice options for Question <%= i %> -->
-                <input type="radio" name="answers[<%= i %>]" id="option<%= j + 1 %>-<%= i %>" value="<%= choice.answer %>">
-                <label for="option<%= j + 1 %>-<%= i %>"><%= choice.answer %></label>
+                <input type="checkbox" name="answers[<%= i %>]" id="option<%= j + 1 %>-<%= i %>" value="<%= choice.answer %>">
+                <label class="choice-button" for="option<%= j + 1 %>-<%= i %>"><%= choice.answer %></label>
               <% } %>
             <% } %>
           </section>
         </div>
       <% } %>
     </div>
+  </section>
     <!-- Next and Submit buttons -->
-    <button id="next-btn">Next</button>
     <button id="submit-btn" data-quizid="<%= quizId %>">Submit</button>
   </form>
+  <button id="next-btn">Next</button>
 </body>
 </html>

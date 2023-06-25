@@ -21,12 +21,12 @@ $(document).ready(function() {
     }
   });
 
-  // Handle submit button click
-  $('#submit-btn').click(function(event) {
-    event.preventDefault(); // Prevent the default form submission behavior
+  // // Handle submit button click
+  // $('#submit-btn').click(function(event) {
+  //   event.preventDefault(); // Prevent the default form submission behavior
 
-    const quizId = $(this).data('quizId'); // Get the quiz ID from data attribute
-    const formAction = '/quizzes/' + quizId; // Construct the correct form action URL
-    $('#quiz-form').attr('action', formAction).submit(); // Set the form action and submit
-  });
+  //   const quizId = $(this).data('quizid'); // Get the quiz ID from data attribute
+  //   const formAction = '/quizzes/result/' + quizId; // Construct the correct form action URL
+  //   $('#quiz-form').attr('action', formAction).submit(); // Set the form action and submit
+  // });
 });
