@@ -1,7 +1,7 @@
 const express = require('express');
 const router  = express.Router();
 
-router.get('/create_quiz', (req, res) => {
+router.get('/', (req, res) => {
   res.render('create_quiz');
 });
 
@@ -9,3 +9,5 @@ router.get('/create_quiz', (req, res) => {
 
 
 module.exports = router;
+
+
