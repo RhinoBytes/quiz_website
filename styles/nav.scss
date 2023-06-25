@@ -1,0 +1,22 @@
+nav {
+  height: 120px;
+  background-color: #fca311;
+  color: #ffffff;
+  top: 0;
+}
+
+.navbar-toggler {
+  background-color: white;
+}
+
+/* Styles for desktop screens (1024px and above) */
+/* Media queries */
+@media screen and (min-width: 1024px) {
+  /* CSS for main section */
+  nav {
+    width: 200vh;
+
+  }
+}
+
+
