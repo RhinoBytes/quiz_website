@@ -1,9 +1,10 @@
 nav {
   height: 80px;
   background-color: #fca311;
-  color: #ffffff;
   top: 0;
   transition: height 0.1s ease;
+  color:inherit;
+  font-size:large;
 }
 
 .navbar-toggler {
@@ -14,5 +15,48 @@ nav {
   overflow: visible;
 }
 
+.username {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  margin: 10px;
+}
 
+@media (max-width: 768px) {
+  .username {
+    position: static;
+    margin: 0;
+  }
+}
+
+.welcome {
+  position: absolute;
+  top: 15px;
+  right: 8px;;
+  margin: 10px;
+  color:crimson;
+}
+
+@media (max-width: 768px) {
+.welcome {
+    position: static;
+    margin: 0;
+  }
+}
+button {
+  padding: 5px 20px;
+  background-color: #14213d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+.login button:hover {
+  background-color: crimson;
+}
 
