@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Home Page</title>
+  <title>Home</title>
 
   <meta charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
@@ -19,21 +19,34 @@
   <link rel="stylesheet" href="/styles/footer.css" />
 
 
-  <script defer src="/scripts/app.js"></script>
+  <script defer src="/scripts/users.js"></script>
   <script defer src="/scripts/nav.js"></script>
-</head>
 
+</head>
 
 <body>
   <%- include('partials/_header') %>
  <div class="quiz-container">
+ <% if (results && results.length > 0) { %>
+  <% results.forEach((quiz) => { %>
     <div class="quiz">
       <form class="myQuizz">
-      <h1>Quiz Name</h1>
-        <h4>Average Score</h4>
-      <p>Description</p>
+      <h1 class="title"><%= quiz.title %></h1>
+      <% if (attempts) { %>
+        <h4>Attempts: <%= attempts %></h4>
+        <% } %>
+      <% if (quiz.averagescore) { %>
+        <h4>Average Score: <%= quiz.averagescore %></h4>
+        <% } else { %>
+          <h4>Average Score: No average found</h4>
+        <% } %>
+      <p>Description: <%= quiz.description %></p>
     </form>
   </div>
+  <% }) %>
+<% } else { %>
+  <p>No quizzes found.</p>
+<% } %>
 </div>
 <%- include('partials/_footer') %>
 </body>

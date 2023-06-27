@@ -5,9 +5,18 @@ require('dotenv').config();
 const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
+let cookieSession = require('cookie-session');
 
 const PORT = process.env.PORT || 8080;
 const app = express();
+
+app.use(cookieSession({
+  name: 'session',
+  keys: ["some value"],
+
+  // Cookie Options
+  maxAge: 24 * 60 * 60 * 1000 // 24 hours
+}))
 
 app.set('view engine', 'ejs');
 
@@ -32,6 +41,7 @@ const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 const myquizzesRoutes = require('./routes/my-quizzes');
+const publicQuizzesRoutes = require('./routes/index');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -40,6 +50,7 @@ app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/quiz', myquizzesRoutes);
+app.use('/', publicQuizzesRoutes);
 // Note: mount other resources here, using the same pattern above
 
 // Home page
