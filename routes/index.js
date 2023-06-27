@@ -2,25 +2,26 @@ const express = require('express');
 const router = express.Router();
 const publicQuizzes = require('../db/queries/index');
 
-
 router.get('/', (req, res) => {
-  publicQuizzes.getPublicQuizzes()
-    .then(quizzes => {
-      const results = [];
-      for(let quiz of quizzes) {
-        console.log(quiz);
+  Promise.all([
+    publicQuizzes.getPublicQuizzes(),
+    publicQuizzes.getPublicQuizAttempts()
+  ])
+    .then(([quizzes, attempts]) => {
+      const promises = quizzes.map(quiz =>
         publicQuizzes.getPublicQuizAverageScore(quiz.id)
-      .then(averagescore => {
-        console.log(averagescore);
-        results.push({...quiz, averagescore })
-        console.log(results);
-      })
-      }
+          .then(averagescore => ({ ...quiz, averagescore }))
+      );
 
-        publicQuizzes.getPublicQuizAttempts()
-        .then(attempts => {
+      Promise.all(promises)
+        .then(results => {
           res.render('index', { results, attempts });
-      })
+        })
+        .catch(error => {
+          // Handle the error appropriately
+          console.error(error);
+          res.status(500).json({ error: 'Internal Server Error' });
+        });
     })
     .catch(error => {
       // Handle the error appropriately
@@ -29,12 +30,8 @@ router.get('/', (req, res) => {
     });
 });
 
-router.post('/login', (req,res) => {
+router.post('/login', (req, res) => {
   req.session.username = req.body.username;
-})
-
-
-
-
+});
 
 module.exports = router;

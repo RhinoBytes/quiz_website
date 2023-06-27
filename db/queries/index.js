@@ -15,14 +15,14 @@ const getPublicQuizAverageScore = (id) => {
 };
 
 const getPublicQuizAttempts = () => {
-  return db.query('SELECT COUNT(*) AS num_attempts FROM attempts JOIN quizzes ON quizzes.id = attempts.quiz_id JOIN users ON users.id = attempts.user_id WHERE users.id = 1;')
+  return db.query('SELECT COUNT(*) AS num_attempts FROM quizzes JOIN attempts ON quizzes.id = attempts.quiz_id WHERE quizzes.visibility = true;')
   .then(data => {
     return data.rows[0].num_attempts;
   });
 };
 
-const getQuizzesByUser = (email) => {
-  return db.query('SELECT title, description FROM quizzes WHERE user_id = $1;' , [email])
+const getQuizzesByUser = (username) => {
+  return db.query('SELECT title, description FROM quizzes WHERE user_id = $1;' , [username])
     .then(data => {
       return data.rows;
     });

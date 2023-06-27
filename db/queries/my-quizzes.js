@@ -1,21 +1,21 @@
 const db = require('../connection'); //databse connection
 
-const getQuizzes = () => {
-  return db.query('SELECT * FROM quizzes JOIN users ON users.id = quizzes.user_id WHERE users.id IN (SELECT id FROM users) ;')
+const getQuizzes = (id) => {
+  return db.query('SELECT quizzes.title, quizzes.description FROM quizzes;')
     .then(data => {
       return data.rows;
     });
 };
 
-const getAverageScore = (id,userid) => {
-  return db.query('SELECT CAST(AVG(score) AS DECIMAL(10,2)) AS average_score FROM results WHERE quiz_id = $1 AND user_id = $2;', [id,userid])
+const getAverageScore = (id, userId) => {
+  return db.query('SELECT CAST(AVG(score) AS DECIMAL(10,2)) AS average_score FROM results;')
   .then(data => {
     return data.rows[0].average_score;
   });
 };
 
 const getAttempts = () => {
-  return db.query('SELECT COUNT(*) AS num_attempts FROM attempts JOIN quizzes ON quizzes.id = attempts.quiz_id JOIN users ON users.id = attempts.user_id WHERE users.id = 1;')
+  return db.query('SELECT COUNT(*) AS num_attempts FROM attempts;')
   .then(data => {
     return data.rows[0].num_attempts;
   });

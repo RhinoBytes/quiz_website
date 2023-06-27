@@ -9,13 +9,11 @@ router.get('/all', (req, res) => {
       .then(averagescore => {
         myQuizzes.getAttempts()
         .then(attempts => {
-          console.log(attempts);
           res.render('my_quizzes', { quizzes, averagescore, attempts });
         })
       })
     })
     .catch(error => {
-      // Handle the error appropriately
       console.error(error);
       res.status(500).json({ error: 'Internal Server Error' });
     });
