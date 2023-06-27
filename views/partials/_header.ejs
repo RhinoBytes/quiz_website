@@ -22,7 +22,7 @@
 
     <!-- Navbar links -->
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="login">
+      <div class="login-div">
       <ul class="navbar-nav">
         <% if (!user) { %>
         <form method="POST" action="/login">
@@ -32,7 +32,7 @@
           <div class="username">
           <lable>Username</lable>
           <input type="text" name="username"></input>
-          <button>Login</button>
+          <button class="login">Login</button>
         </form>
         <%  } else { %>
           <li class="nav-item">
@@ -45,7 +45,12 @@
             <a class="nav-link" href="/quiz/all">My Quizzes</a>
           </li>
           <li class="nav-item">
-            <p class="welcome"> Welcome <%= user %>!</p>
+            <div class="welcome">
+            <p>Welcome <%= user %>!</p>
+            <form method="POST" action="/logout">
+              <button class="logout" type="submit">Log Out</button>
+            </form>
+          </div>
           </li>
           <%  } %>
       </ul>

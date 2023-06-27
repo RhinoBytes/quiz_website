@@ -76,9 +76,10 @@ app.use('/create-quiz', createQuizRoutes);
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
-
-
-
+app.post('/logout', (req, res) => {
+  req.session = null;
+  res.redirect('/');
+});
 
 
 app.get('/', (req, res) => {

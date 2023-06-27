@@ -8,7 +8,6 @@ router.get('/all', (req, res) => {
     res.send("You are not logged");
     return;
   }
-console.log("userid:", userId);
   // Fetch quizzes for the user
   myQuizzes.getQuizzes(userId)
     .then(quizzes => {
