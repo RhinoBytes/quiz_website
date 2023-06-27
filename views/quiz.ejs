@@ -27,8 +27,8 @@
   <%- include('partials/_header') %>
   <div class="quiz-questions">
   <h1>Do your best</h1>
+  <div class="error-message"></div>
   <section id="container">
-
   <form id="quiz-form" action="/quizzes/<%= quizId %>" method="POST">
     <div class="question-container">
       <% for (let i = 0; i < quiz.length; i++) { %>

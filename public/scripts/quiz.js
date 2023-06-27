@@ -12,8 +12,10 @@ $(document).ready(function () {
     const optionsContainer = currentQuestion.find('.allOptions:checked');
     if (optionsContainer.length !== 1) {
       event.preventDefault()
-      alert('Please select exactly one option.');
+      $(".error-message").text("🛑 You must choose one answer 🛑").slideDown();
       return; // Stop further execution
+    } else {
+      $(".error-message").slideUp(); // Hide the error message
     }
   });
 
@@ -25,8 +27,10 @@ $(document).ready(function () {
       const optionsContainer = currentQuestion.find('.allOptions:checked');
       console.log("optionsContainer>>>>>>>>>>>" ,optionsContainer);
       if (optionsContainer.length !== 1) {
-        alert('Please select exactly one option.');
+        $(".error-message").text("🛑 You must choose one answer 🛑").slideDown();
         return; // Stop further execution
+      }else {
+        $(".error-message").slideUp(); // Hide the error message
       }
 
       // Show next question or submit button if there are no more questions
