@@ -1,52 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Create Quiz</title>
 
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<head>
+  <title>Create Quiz</title>
 
-    <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
-    <link rel="stylesheet" href="/vendor/border-box.css" />
-    <link rel="stylesheet" href="/styles/main.css" />
-    <link rel="stylesheet" href="/styles/layout.css" />
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <script src="/vendor/jquery-3.0.0.js"></script>
-    <script defer src="/scripts/users.js"></script>
-  </head>
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" />
+  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/layout.css" />
 
+  <script src="/vendor/jquery-3.0.0.js"></script>
+  <script defer src="/scripts/create-quiz.js"></script>
+</head>
 
-  <body><section>
-    <h2>Create a new Quiz</h2>
+<body>
+
+  <!-- Modal -->
+  <div id="myModal" class="modal">
+    <!-- Modal content -->
+    <div id="modal-box" class="modal-content">
+      <span id="modal-close-button" class="close">&times;</span>
+      <p>Type in your friends email to share this quiz!</p>
+      <input type="email" id="modal-email-input" required>
+      <button id="modal-submit-button">Submit</button>
+    </div>
+  </div>
+  <section id="quiz-box">
+    <h2>Create A New Quiz</h2>
     <form action="/api/create-quiz" id="quiz-output" method="post">
       <label for="quiz-title">Quiz Title:</label><br />
-      <input type="text" id="quiz-title" name="quiz-title" /><br />
+      <input type="text" id="quiz-title" name="quiz-title" class="form-input" /><br />
       <label for="quiz-desc">Quiz Description:</label><br />
-      <textarea id="quiz-desc" name="quiz-desc"></textarea><br />
+      <textarea id="quiz-desc" name="quiz-desc" class="form-input"></textarea><br />
+      <p>Remember to choose one correct answer for each question.</p>
+      <% for (var i=1; i <=5; i++) { %>
+        <!-- Question <%= i %> -->
+        <label for="question-<%= i %>">Question <%= i %>:</label><br />
+        <input type="text" id="question-<%= i %>" name="question-<%= i %>" class="form-input" /><br />
 
-      <% for (var i = 1; i <= 5; i++) { %>
-      <!-- Question <%= i %> -->
-      <label for="question-<%= i %>">Question <%= i %>:</label><br />
-      <input type="text" id="question-<%= i %>" name="question-<%= i %>" /><br />
+        <% for (var j=1; j <=4; j++) { %>
+          <label for="answer-<%= i %>-<%= j %>">
+            Answer <%= j %>: <input type="radio" name="correct-answer-<%= i %>" value="<%= j %>" class="form-input" />
+          </label>
+          <input type="text" id="answer-<%= i %>-<%= j %>" name="answer-<%= i %>-<%= j %>" class="form-input" /><br />
+          <% } %>
+            <% } %>
 
-      <% for (var j = 1; j <= 4; j++) { %>
-      <label for="answer-<%= i %>-<%= j %>">
-        Answer <%= j %>: <input type="radio" name="correct-answer-<%= i %>" value="<%= j %>" />
-      </label>
-      <input
-        type="text"
-        id="answer-<%= i %>-<%= j %>"
-        name="answer-<%= i %>-<%= j %>"
-      /><br />
-      <% } %>
-      <% } %>
+              <input type="checkbox" id="private-check" name="private-check" class="form-input" />
+              <label for="private-check">Make Quiz Private.</label><br />
 
-      <input type="checkbox" id="private-check" name="private-check" />
-      <label for="private-check">Make quiz private</label><br />
-
-      <input type="submit" value="Create Quiz" />
+              <input type="submit" value="Create Quiz" />
+              <p id="error-message" style="display: none; color: red;"></p>
     </form>
   </section>
-  </body>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
 </html>

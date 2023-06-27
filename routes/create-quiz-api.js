@@ -1,9 +1,44 @@
 const express = require('express');
 const router  = express.Router();
 const db = require('../db/connection');
-const formProcessor = require('../public/scripts/create-quiz')
 
-router.post('/', async (req, res) => { //change here
+function processFormData(req) {
+  const quizTitle = req.body['quiz-title'];
+  const quizDesc = req.body['quiz-desc'];
+  const username = 'Doug';
+
+  const questions = [];
+  for (let i = 1; i <= 5; i++) {
+    const question = req.body[`question-${i}`];
+    const answers = [];
+    let correctAnswer = null;
+    for (let j = 1; j <= 4; j++) {
+      const answer = req.body[`answer-${i}-${j}`];
+      answers.push(answer);
+      if (req.body[`correct-answer-${i}`] === `${j}`) {
+        correctAnswer = j;
+      }
+    }
+    questions.push({ question, answers, correctAnswer });
+  }
+
+  const creationDate = new Date();
+  const formattedDate = creationDate.toISOString().split('T')[0];
+
+  const isPrivate = req.body['private-check'] === 'on';
+
+  return {
+    quizTitle,
+    quizDesc,
+    username,
+    questions,
+    formattedDate,
+    isPrivate,
+  };
+}
+
+router.post('/', async (req, res) => {
+  console.log("error post")
   try {
     const {
       quizTitle,
@@ -12,7 +47,7 @@ router.post('/', async (req, res) => { //change here
       questions,
       formattedDate,
       isPrivate,
-    } = formProcessor.processFormData(req);
+    } = processFormData(req);
 
     const userId = await db.insertUser(username);
     console.log('User inserted. UserID:', userId);
@@ -30,8 +65,8 @@ router.post('/', async (req, res) => { //change here
       await db.insertQuestion(question.question, quizId);
       console.log('Question inserted:', question.question);
     }
+    res.sendStatus(200);
 
-    res.send('Quiz created successfully!');
   } catch (error) {
     console.error('Error creating quiz:', error);
     res.status(500).send('Internal Server Error');

@@ -1,39 +1,60 @@
-// formProcessor.js
-function processFormData(req) {
-  const quizTitle = req.body['quiz-title'];
-  const quizDesc = req.body['quiz-desc'];
-  const username = 'Doug';
+$(document).ready(function() {
+  $('#quiz-output').submit(function(event) {
+    event.preventDefault();  // prevent form from submitting
 
-  const questions = [];
-  for (let i = 1; i <= 5; i++) {
-    const question = req.body[`question-${i}`];
-    const answers = [];
-    let correctAnswer = null;
-    for (let j = 1; j <= 4; j++) {
-      const answer = req.body[`answer-${i}-${j}`];
-      answers.push(answer);
-      if (req.body[`correct-answer-${i}`] === `${j}`) {
-        correctAnswer = j;
+    var hasError = false;
+
+    // check for errors
+    $('.form-input').each(function() {
+      if ($(this).val().trim() === '') {
+        hasError = true;
+        $(this).addClass('error');
+      } else {
+        $(this).removeClass('error');
       }
+    });
+
+    if (hasError) {
+      $('#error-message').text('All fields must be filled');
+      $('#error-message').show();
+    } else {
+      // if no errors, submit the form via AJAX then show the modal box
+      $.ajax({
+        type: 'POST',
+        url: '/api/create-quiz',
+        data: $('#quiz-output').serialize(),
+        success: function() {
+          showModalBox();
+        }
+      });
     }
-    questions.push({ question, answers, correctAnswer });
+  });
+
+  $('.form-input').on('input', function() {
+    $(this).removeClass('error');
+    $('#error-message').hide();
+  });
+
+  function showModalBox() {
+    // Assuming 'quizUrl' is the URL of the quiz
+    var quizUrl = 'http://example.com/quiz';  // Replace this with actual quiz URL
+
+    $('#quizUrl').val(quizUrl);  // Set the quiz URL in the modal
+    $('#myModal').show();  // Show the modal
+
+    // Add event handler for modal box close button
+    $('#modal-close-button').on('click', function() {
+      $('#myModal').hide();  // Hide the modal
+    });
+
+    // Add event handler for modal submit button
+    $('#modal-submit-button').on('click', function() {
+      var email = $('#modal-email-input').val();
+      if (email) {
+        var mailto_link = 'mailto:' + email + '?subject=Quiz Link&body=' + quizUrl;
+        window.location.href = mailto_link;
+      }
+      $('#myModal').hide();  // Hide the modal
+    });
   }
-
-  const creationDate = new Date();
-  const formattedDate = creationDate.toISOString().split('T')[0];
-
-  const isPrivate = req.body['private-check'] === 'on';
-
-  return {
-    quizTitle,
-    quizDesc,
-    username,
-    questions,
-    formattedDate,
-    isPrivate,
-  };
-}
-
-module.exports = {
-  processFormData,
-};
+});
