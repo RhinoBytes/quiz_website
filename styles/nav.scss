@@ -22,28 +22,16 @@ nav {
   margin: 10px;
 }
 
-@media (max-width: 768px) {
-  .username {
-    position: static;
-    margin: 0;
-  }
-}
 
 .welcome {
   position: absolute;
   top: 15px;
   right: 8px;;
   margin: 10px;
-  color:crimson;
+  color:#14213d;
 }
 
-@media (max-width: 768px) {
-.welcome {
-    position: static;
-    margin: 0;
-  }
-}
-button {
+.login button {
   padding: 5px 20px;
   background-color: #14213d;
   color: white;
@@ -52,11 +40,26 @@ button {
   cursor: pointer;
 }
 
-button:focus {
+.login button:focus {
   outline: none;
 }
 
 .login button:hover {
-  background-color: crimson;
+  background-color: #e5e5e5;
+  color:#14213d;
 }
 
+
+@media (max-width: 990px) and (min-width:200px) {
+  .welcome {
+      position: static;
+      margin: 0;
+    }
+  }
+
+@media (max-width: 990px) and (min-width:200px) {
+    .username {
+      position: static;
+      margin: 0;
+    }
+  }

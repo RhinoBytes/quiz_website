@@ -32,13 +32,31 @@
      <div class="quiz">
       <form class="myQuizz" action="/quizzes/<%= quiz.id %>" method="GET">
         <h1 class="title"><%= quiz.title %></h1>
-        <% if (quiz.attempts) { %>
-          <h4>Attempts: <%= quiz.attempts %></h4>
+       <% if (quiz.attempts) { %>
+
+          <div class="attempts">
+            <h4 class="attempts-text">Attempts:</h4>
+            <h4 class="attempts-value"><%= quiz.attempts %></h4>
+          </div>
+        <% } else { %>
+          <div class="attempts">
+            <span class="attempts-text">Attempts:</span>
+            <span class="attempts-value">None</span>
+          </div>
         <% } %>
-        <% if (quiz.averagescore) { %>
-          <h4>Average Score: <%= quiz.averagescore %></h4>
-        <% } %>
-        <p>Description: <%= quiz.description %></p>
+
+        <div class="average-score">
+          <h4 class="average-score-text">Average Score:</h4>
+          <% if (quiz.averagescore) { %>
+            <h4 class="average-score-value"><%= quiz.averagescore %></h4>
+          <% } else { %>
+            <span class="average-score-value">None</span>
+          <% } %>
+        </div>
+
+        <p class="description-text">Description:</p>
+        <p class="description-value"><%= quiz.description %></p>
+
         <button class="take-quiz-btn" type="submit">Take Quiz</button>
       </form>
     </div>

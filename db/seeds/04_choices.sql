@@ -209,3 +209,153 @@ INSERT INTO choices (answer, is_correct_answer, question_id)
 VALUES ('Roadrunner', false, 25);
 INSERT INTO choices (answer, is_correct_answer, question_id)
 VALUES ('Secretary Bird', false, 25);
+
+-- For Question 26:
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('Austin', true, 26);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('Houston', false, 26);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('Dallas', false, 26);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('San Antonio', false, 26);
+
+-- For Question 27:
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('Sacramento', true, 27);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('Los Angeles', false, 27);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('San Diego', false, 27);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('San Francisco', false, 27);
+
+-- For Question 28:
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('Tallahassee', true, 28);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('Miami', false, 28);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('Orlando', false, 28);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('Jacksonville', false, 28);
+
+-- For Question 29:
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('Albany', true, 29);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('New York City', false, 29);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('Buffalo', false, 29);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('Rochester', false, 29);
+
+-- For Question 30:
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('Springfield', true, 30);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('Chicago', false, 30);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('Peoria', false, 30);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('Rockford', false, 30);
+
+-- For Question 31:
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('Jane Austen', true, 31);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('Charles Dickens', false, 31);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('Mark Twain', false, 31);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('Emily Bronte', false, 31);
+
+-- For Question 32:
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('Herman Melville', true, 32);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('Edgar Allan Poe', false, 32);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('Robert Louis Stevenson', false, 32);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('Nathaniel Hawthorne', false, 32);
+
+-- For Question 33:
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('A dystopian future where society is under totalitarian rule', true, 33);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('A love story set in Victorian England', false, 33);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('A journey on a whaling ship', false, 33);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('A story about the American Civil War', false, 33);
+
+-- For Question 34:
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('Harper Lee', true, 34);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('Margaret Mitchell', false, 34);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('John Steinbeck', false, 34);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('J.D. Salinger', false, 34);
+
+-- For Question 35:
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('F. Scott Fitzgerald', true, 35);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('Ernest Hemingway', false, 35);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('William Faulkner', false, 35);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('James Joyce', false, 35);
+
+-- For Question 36:
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('Christopher Columbus', true, 36);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('Leif Erikson', false, 36);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('Ferdinand Magellan', false, 36);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('Marco Polo', false, 36);
+
+-- For Question 37:
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('1789–1799', true, 37);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('1803–1815', false, 37);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('1756–1763', false, 37);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('1914–1918', false, 37);
+
+-- For Question 38:
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('Neil Armstrong', true, 38);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('Buzz Aldrin', false, 38);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('Yuri Gagarin', false, 38);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('Michael Collins', false, 38);
+
+-- For Question 39:
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('1914–1918', true, 39);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('1939–1945', false, 39);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('1917–1922', false, 39);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('1870–1871', false, 39);
+
+-- For Question 40:
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('Abraham Lincoln', true, 40);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('George Washington', false, 40);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('Thomas Jefferson', false, 40);
+INSERT INTO choices (answer, is_correct_answer, question_id)
+VALUES ('James Madison', false, 40);
