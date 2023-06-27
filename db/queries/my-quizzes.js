@@ -7,8 +7,8 @@ const getQuizzes = () => {
     });
 };
 
-const getAverageScore = () => {
-  return db.query('SELECT CAST(AVG(score) AS DECIMAL(10,2)) AS average_score FROM results JOIN users ON users.id = results.user_id WHERE user_id = 1;')
+const getAverageScore = (id,userid) => {
+  return db.query('SELECT CAST(AVG(score) AS DECIMAL(10,2)) AS average_score FROM results WHERE quiz_id = $1 AND user_id = $2;', [id,userid])
   .then(data => {
     return data.rows[0].average_score;
   });
