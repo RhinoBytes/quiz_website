@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Users</title>
+  <title>Result</title>
 
   <meta charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
@@ -18,9 +18,18 @@
 </head>
 
 <body>
-  <h1>Users</h1>
-  <button id="fetch-users">Fetch Users via AJAX</button>
-  <ul id="users"></ul>
+  <h1>Quiz Result</h1>
+
+  <p>Your score: <%= score %></p>
+
+  <% if (score >= 3) { %>
+    <p>Congratulations! You passed the quiz.</p>
+  <% } else { %>
+    <p>Sorry, you did not pass the quiz.</p>
+  <% } %>
+
+  <!-- Add this section to display the user ID -->
+  <p>User ID: <%= req.session.userId %></p>
 </body>
 
 </html>
