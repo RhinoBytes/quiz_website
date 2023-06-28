@@ -1,7 +1,7 @@
 const db = require('../connection'); //databse connection
 
-const getQuizzes = () => {
-  return db.query('SELECT quizzes.title, quizzes.description FROM quizzes WHERE user_id = $1;')
+const getQuizzes = (userId) => {
+  return db.query('SELECT quizzes.title, quizzes.description FROM quizzes WHERE user_id = $1;', [userId])
     .then(data => {
       return data.rows;
     });
@@ -24,4 +24,4 @@ const getAttempts = () => {
 
 
 
-module.exports = { getQuizzes,getAverageScore, getAttempts };
+module.exports = { getQuizzes, getAverageScore, getAttempts, db };

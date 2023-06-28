@@ -1,8 +1,10 @@
 const express = require('express');
 const router = express.Router();
 const publicQuizzes = require('../db/queries/index');
+const { db } = require('../db/queries/my-quizzes');
 
 router.get('/', (req, res) => {
+  console.log(req.session);
   Promise.all([
     publicQuizzes.getPublicQuizzes(),
     publicQuizzes.getPublicQuizAttempts()
@@ -32,9 +34,7 @@ router.get('/', (req, res) => {
     });
 });
 
-router.post('/login', (req, res) => {
-  req.session.username = req.body.username; //query the database for user whose name matches req.body.user, if there is a match then set another session if its not there, then insert that in the database and pull the resulting id.
-  res.redirect('/')
-});
+
+
 
 module.exports = router;

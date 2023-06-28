@@ -3,7 +3,9 @@ const router = express.Router();
 const myQuizzes = require('../db/queries/my-quizzes');
 
 router.get('/all', (req, res) => {
-  myQuizzes.getQuizzes()
+  const userId = req.session.user
+  const user = req.session.username;
+  myQuizzes.getQuizzes(userId)
     .then(quizzes => {
       myQuizzes.getAverageScore()
       .then(averagescore => {

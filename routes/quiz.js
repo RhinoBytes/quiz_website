@@ -7,7 +7,7 @@
 
 const express = require('express');
 const router = express.Router();
-const {db} = require('../db/connection')
+const db = require('../db/connection')
 const session = require('express-session');
 
 router.use(session({
