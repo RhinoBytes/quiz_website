@@ -1,0 +1,84 @@
+$background-color: #14213d;
+$nav-color: #fca311;
+$primary-color: #e5e5e5;
+
+body {
+  font-family: Arial, sans-serif;
+  font-size: larger;
+  font-weight: bolder;
+  text-align: center;
+  background-color: $background-color;
+  padding: 20px;
+}
+
+/* Styles for the heading */
+h1 {
+  padding: 20px;
+  color: $nav-color;
+  margin-bottom: 100px;
+}
+
+/* Styles for the section */
+section#container {
+  background-color: $primary-color;
+  border-radius: 5px;
+  padding: 150px;
+  border-color: #fca311;
+  border-style:groove;
+  border-width: 5px;
+  font-size: xx-large;
+
+}
+.choice-button {
+  display: inline-block;
+  padding: 10px;
+  margin-right: 10px;
+  background-color: #e5e5e5;
+  border: none;
+  color: #14213d;
+  cursor: pointer;
+}
+
+.choice-button:hover {
+  background-color: #fca311;
+  color: #ffffff;
+}
+
+.choice-button input[type="checkbox"] {
+  display: none;
+}
+
+.choice-button input[type="checkbox"]:checked + label {
+  background-color: #fca311;
+  color: #ffffff;
+}
+
+
+input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+#next-btn,
+#submit-btn {
+  padding: 10px 20px;
+  border: none;
+  background-color: #fca311;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 5px;
+}
+
+#next-btn:hover,
+#submit-btn:hover {
+  background-color: #fca311;
+  color: #14213d;
+}
+
+#next-btn {
+  margin-top: 20px;
+}
+
+#submit-btn {
+  display: none;
+}
