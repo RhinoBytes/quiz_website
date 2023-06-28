@@ -17,9 +17,6 @@ body {
 
 }
 
-#quiz-output {
-
-}
 
 
 
@@ -46,7 +43,7 @@ body {
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: #14213d; /* Fallback color */
+
 }
 .modal-content {
   background-color: #e5e5e5;
@@ -54,4 +51,15 @@ body {
   margin: 15% auto; /* 15% from the top and centered */
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
+}
+
+
+header {
+  display: flex;
+  height: 100px;
+  width: 100%;
+  background-color: #e5e5e5;
+}
+.navbar {
+  flex-direction: column;
 }
