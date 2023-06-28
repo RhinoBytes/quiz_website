@@ -3,13 +3,13 @@ const router = express.Router();
 const myQuizzes = require('../db/queries/my-quizzes');
 
 router.get('/all', (req, res) => {
-  myQuizzes.getQuizzes()
+  myQuizzes.getQuizzes(id)
     .then(quizzes => {
       myQuizzes.getAverageScore()
       .then(averagescore => {
         myQuizzes.getAttempts()
         .then(attempts => {
-          res.render('my_quizzes', { quizzes, averagescore, attempts });
+          res.render('my_quizzes', { quizzes, averagescore, attempts }); //my_quizzes is referring to my-quizzes.ejs file
         })
       })
     })

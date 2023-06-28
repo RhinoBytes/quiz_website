@@ -5,7 +5,6 @@ const publicQuizzes = require('../db/queries/index');
 router.get('/', (req, res) => {
   Promise.all([
     publicQuizzes.getPublicQuizzes(),
-    publicQuizzes.getPublicQuizAttempts()
   ])
     .then(([quizzes, attempts]) => {
       const promises = quizzes.map(quiz =>
@@ -17,7 +16,7 @@ router.get('/', (req, res) => {
         .then(results => {
           const user = req.session.username;
           console.log(user);
-          res.render('index', { results, attempts, user });
+          res.render('index', { results, attempts, user }); //here index is referring to index.ejs file
         })
         .catch(error => {
           // Handle the error appropriately

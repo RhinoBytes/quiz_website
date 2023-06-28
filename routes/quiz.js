@@ -8,13 +8,13 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../db/connection')
-// const session = require('express-session');
+const session = require('express-session');
 
-// router.use(session({
-//   secret: 'secret',
-//   resave: false,
-//   saveUninitialized: true
-// }));
+router.use(session({
+  secret: 'secret',
+  resave: false,
+  saveUninitialized: true
+}));
 
 // router.get('/', (req, res) => {
 //   res.send('quiz' + req.params.id);
@@ -31,6 +31,7 @@ router.get('/:id', (req, res) => {
     SELECT * FROM questions
     WHERE quiz_id = $1
   `;
+  console.log("db is :", db);
   const questionsPromise = db.query(questionsQuery, [quizId]);
 
   // Query to fetch choices for the questions
@@ -67,15 +68,21 @@ router.get('/:id', (req, res) => {
 router.post('/:id', (req, res) => {
   const quizId = req.params.id;
   const userId = req.session.userId; // Assuming user ID is stored in the session
-
+console.log("+++++++++++++++++++++++++", req.body);
   // Fetch the correct answers for the quiz
+  // const correctAnswersQuery = `
+  //   SELECT questions.id AS question_id, choices.id AS choice_id
+  //   FROM questions
+  //   INNER JOIN choices ON questions.id = choices.question_id
+  //   WHERE questions.quiz_id = $1 AND choices.is_correct_answer = TRUE
+  // `;
   const correctAnswersQuery = `
-    SELECT questions.id AS question_id, choices.id AS choice_id
-    FROM questions
-    INNER JOIN choices ON questions.id = choices.question_id
-    WHERE questions.quiz_id = $1 AND choices.is_correct_answer = TRUE
+  SELECT * FROM choices
+  JOIN questions ON questions.id = question_id
+  WHERE quiz_id = $1
+  AND is_correct_answer = $2
   `;
-  db.query(correctAnswersQuery, [quizId])
+  db.query(correctAnswersQuery, [quizId, true])
     .then(result => {
       const correctAnswers = result.rows;
       // Assuming the submitted answers are sent in the request body
@@ -83,31 +90,37 @@ router.post('/:id', (req, res) => {
 
       // Calculate the score based on the submitted answers
       let score = 0;
-      for (const questionId in submittedAnswers) {
-        const selectedChoiceId = submittedAnswers[questionId];
+      console.log("__________________________________", correctAnswers);
+      for (const index in submittedAnswers) {
+
+        const selectedChoice = submittedAnswers[index];
+        const correctAnswer = correctAnswers[index].answer;
+        // const correctChoice = correctAnswer === selectedChoice
 
         // Find the correct choice based on the question ID
-        let correctChoice = correctAnswers.find(answer => answer.question_id === parseInt(questionId));
+        // let correctChoice = correctAnswers.find(answer => answer.index === parseInt(index));
+        console.log("||||||||||||||||||||||||", selectedChoice, correctAnswer);
 
         // Compare the selected choice ID with the correct choice ID
-        if (correctChoice && selectedChoiceId === correctChoice.choice_id) {
+        if (correctAnswer === selectedChoice) {
           score++;
         }
       }
-
       // Store the result in the database
       const insertResultQuery = `
         INSERT INTO results (user_id, quiz_id, score)
         VALUES ($1, $2, $3)
-        RETURNING score
+        RETURNING *
       `;
-      const insertResultValues = [userId, quizId, score];
+      const insertResultValues = [1, quizId, score];
+      console.log("consol log: ", insertResultValues);
       db.query(insertResultQuery, insertResultValues)
         .then(result => {
           const insertedResult = result.rows[0];
 
           // Render the result page with the calculated score
-          res.render('quiz_results', { score: insertedResult.score, userId: userId });
+          res.redirect(`/quizzes/result/${insertedResult.id}`)
+            // , { quizId: quizId, score: insertedResult.score, userId: userId });
         })
         .catch(error => {
           console.error('Error storing result:', error);
@@ -120,7 +133,22 @@ router.post('/:id', (req, res) => {
     });
 });
 
-
-
+router.get('/result/:id', (req, res) => {
+  // res.render('quiz_results', { quizId: quizId, score: insertedResult.score, userId: userId });
+  const correctAnswersQuery = `
+  SELECT * FROM results
+  WHERE id = $1
+  `;
+  db.query(correctAnswersQuery, [req.params.id])
+    .then(results => {
+      console.log("_________________________",results);
+      const result = results.rows[0]
+      res.render('quiz_results', { quizId: result["quiz_id"], score: result["score"], userId: result["user_id"] });
+  })
+  .catch(error => {
+    console.error('Error fetching the result:', error);
+    res.status(500).json({ error: 'Failed to fetch the result', details: error.message });
+  });
+});
 
 module.exports = router;

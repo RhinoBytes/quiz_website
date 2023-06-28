@@ -1,7 +1,7 @@
 const db = require('../connection'); //databse connection
 
 const getPublicQuizzes = () => {
-  return db.query('SELECT id, title, description FROM quizzes WHERE visibility = $1;', ['t'])
+  return db.query('SELECT quizzes.*, COUNT(attempts.id) AS num_attempts FROM quizzes LEFT JOIN attempts ON quizzes.id = attempts.quiz_id WHERE visibility = true GROUP BY quizzes.id;')
     .then(data => {
       return data.rows;
     });
@@ -14,13 +14,6 @@ const getPublicQuizAverageScore = (id) => {
   });
 };
 
-const getPublicQuizAttempts = () => {
-  return db.query('SELECT COUNT(*) AS num_attempts FROM quizzes JOIN attempts ON quizzes.id = attempts.quiz_id WHERE visibility = $1;', ['t'])
-  .then(data => {
-    return data.rows[0].num_attempts;
-  });
-};
-
 const getQuizzesByUser = (username) => {
   return db.query('SELECT title, description FROM quizzes WHERE user_id = $1;' , [username])
     .then(data => {
@@ -30,4 +23,4 @@ const getQuizzesByUser = (username) => {
 
 
 
-module.exports = { getPublicQuizzes,getPublicQuizAverageScore, getPublicQuizAttempts, getQuizzesByUser};
+module.exports = { getPublicQuizzes,getPublicQuizAverageScore, getQuizzesByUser};

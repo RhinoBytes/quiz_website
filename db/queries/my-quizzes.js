@@ -1,7 +1,7 @@
 const db = require('../connection'); //databse connection
 
-const getQuizzes = () => {
-  return db.query('SELECT quizzes.title, quizzes.description FROM quizzes WHERE user_id = $1;')
+const getQuizzes = (id) => {
+  return db.query('SELECT quizzes.title, quizzes.description FROM quizzes WHERE user_id = $1;', [id])
     .then(data => {
       return data.rows;
     });
