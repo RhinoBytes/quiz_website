@@ -32,12 +32,18 @@
         <li class="nav-item">
           <a class="nav-link" href="/quiz/all">My Quizzes</a>
         </li>
+        <% if (!user) { %>
+        <form method="POST" action="/login">
 
-        <form>
           <lable>Username</lable>
-          <input type="text"></input>
+          <input type="text" name="username"></input>
           <button>Login</button>
         </form>
+        <%  } else { %>
+          <li class="nav-item">
+            <p> <%= user %></p>
+          </li>
+          <%  } %>
       </ul>
     </div>
   </nav>

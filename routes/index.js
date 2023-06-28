@@ -15,7 +15,9 @@ router.get('/', (req, res) => {
 
       Promise.all(promises)
         .then(results => {
-          res.render('index', { results, attempts });
+          const user = req.session.username;
+          console.log(user);
+          res.render('index', { results, attempts, user });
         })
         .catch(error => {
           // Handle the error appropriately
@@ -31,7 +33,8 @@ router.get('/', (req, res) => {
 });
 
 router.post('/login', (req, res) => {
-  req.session.username = req.body.username;
+  req.session.username = req.body.username; //query the database for user whose name matches req.body.user, if there is a match then set another session if its not there, then insert that in the database and pull the resulting id.
+  res.redirect('/')
 });
 
 module.exports = router;

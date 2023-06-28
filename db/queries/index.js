@@ -15,7 +15,7 @@ const getPublicQuizAverageScore = (id) => {
 };
 
 const getPublicQuizAttempts = () => {
-  return db.query('SELECT COUNT(*) AS num_attempts FROM quizzes JOIN attempts ON quizzes.id = attempts.quiz_id WHERE quizzes.visibility = true;')
+  return db.query('SELECT COUNT(*) AS num_attempts FROM quizzes JOIN attempts ON quizzes.id = attempts.quiz_id WHERE visibility = $1;', ['t'])
   .then(data => {
     return data.rows[0].num_attempts;
   });
