@@ -20,10 +20,12 @@
   <script defer src="/scripts/users.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="/scripts/quiz.js"></script>
+  <script defer src="/scripts/nav.js"></script>
 </head>
 
 <body>
   <%- include('partials/_header') %>
+  <div class="quiz-questions">
   <h1>Do your best</h1>
   <section id="container">
 
@@ -52,6 +54,7 @@
     <button id="submit-btn" data-quizid="<%= quizId %>">Submit</button>
   </form>
   <button id="next-btn">Next</button>
-  <%- include('partials/_footer') %>
+</div>
+<%- include('partials/_footer') %>
 </body>
 </html>
