@@ -26,7 +26,7 @@ function processFormData(req) {
   const creationDate = new Date();
   const formattedDate = creationDate.toISOString().split('T')[0];
 
-  const isPrivate = req.body['private-check'] === 'on';
+  const isPrivate = req.body['private-check'];
 
   return {
     quizTitle,
@@ -39,7 +39,7 @@ function processFormData(req) {
 }
 
 router.post('/', async (req, res) => {
-  console.log("error post");
+
   try {
     const {
       quizTitle,
