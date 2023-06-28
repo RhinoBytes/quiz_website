@@ -2,25 +2,51 @@
 <html lang="en">
 
 <head>
-  <title>Users</title>
+  <title>My Quizzes</title>
 
   <meta charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <script src="/vendor/jquery-3.0.0.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
   <link rel="stylesheet" href="/styles/main.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
+  <link rel="stylesheet" href="/styles/nav.css" />
+  <link rel="stylesheet" href="/styles/footer.css" />
 
-  <script src="/vendor/jquery-3.0.0.js"></script>
+
   <script defer src="/scripts/users.js"></script>
+  <script defer src="/scripts/nav.js"></script>
+
 </head>
 
 <body>
-  <h1>Users</h1>
-  <button id="fetch-users">Fetch Users via AJAX</button>
-  <ul id="users"></ul>
+  <%- include('partials/_header') %>
+ <div class="quiz-container">
+ <% if (quizzes && quizzes.length > 0) { %>
+  <% quizzes.forEach((quiz) => { %>
+    <div class="quiz">
+      <form class="myQuizz">
+      <h1 class="title"><%= quiz.title %></h1>
+      <% if (attempts) { %>
+        <h4>Attempts: <%= attempts %></h4>
+        <% } %>
+      <% if (averagescore) { %>
+        <h4>Average Score: <%= averagescore %></h4>
+        <% } %>
+      <p>Description: <%= quiz.description %></p>
+      <button>Take Quiz</button>
+    </form>
+  </div>
+  <% }) %>
+<% } else { %>
+  <p>No quizzes found.</p>
+<% } %>
+</div>
+<%- include('partials/_footer') %>
 </body>
-
 </html>
