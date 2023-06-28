@@ -30,7 +30,7 @@
  <% if (results && results.length > 0) { %>
   <% results.forEach((quiz) => { %>
     <div class="quiz">
-      <form class="myQuizz">
+      <form class="myQuizz" action="/quizzes/<%= quiz.id %>" method="GET">
       <h1 class="title"><%= quiz.title %></h1>
       <% if (attempts) { %>
         <h4>Attempts: <%= attempts %></h4>
@@ -41,9 +41,9 @@
           <h4>Average Score: No average found</h4>
         <% } %>
       <p>Description: <%= quiz.description %></p>
-      <button>Take Quiz</button>
+      <button type="submit">Take Quiz</button>
     </form>
-  </div>
+    </div>
   <% }) %>
 <% } else { %>
   <p>No quizzes found.</p>
