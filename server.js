@@ -6,17 +6,22 @@ const sassMiddleware = require('./lib/sass-middleware');
 const express = require('express');
 const morgan = require('morgan');
 let cookieSession = require('cookie-session');
+let cookieSession = require('cookie-session');
 
 const PORT = process.env.PORT || 8080;
 const app = express();
 
 app.use(cookieSession({
-name: 'session',
-keys: ["some value"],
+  name: 'session',
+  keys: ['s3cr3tK3yV4lu3'],
 
-//   // Cookie Options
-maxAge: 24 * 60 * 60 * 1000 // 24 hours
+  // Cookie Options
+  maxAge: 24 * 60 * 60 * 1000 // 24 hours
 }))
+app.use((req, res, next) => {
+  res.locals.user = req.session.user;
+  next();
+});
 
 app.set('view engine', 'ejs');
 
@@ -46,6 +51,7 @@ const createQuizApiRoutes = require('./routes/create-quiz-api');
 const createQuizRoutes = require('./routes/create-quiz');
 const myquizzesRoutes = require('./routes/my-quizzes');
 const publicQuizzesRoutes = require('./routes/index');
+const authRoutes = require('./routes/auth');
 
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
@@ -55,12 +61,14 @@ app.use('/api/widgets', widgetApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/quizzes', quizRoutes);
 app.use('/quiz', myquizzesRoutes);
+app.use('/', authRoutes);
 app.use('/', publicQuizzesRoutes);
 // Note: mount other resources here, using the same pattern above
 
 // routes for create_quiz
 app.use('/api/create-quiz', createQuizApiRoutes);
 app.use('/create-quiz', createQuizRoutes);
+
 
 // Home page
 // Warning: avoid creating more routes in this file!

@@ -10,9 +10,18 @@ const getUsers = () => {
 
 // async functions for create_quiz
 async function insertUser(username) {
-  const userQuery = 'INSERT INTO users (username) VALUES ($1) RETURNING id';
-  const userResult = await db.query(userQuery, [username]);
-  return userResult.rows[0].id;
+  const existingUserQuery = 'SELECT id FROM users WHERE username = $1';
+  const existingUserResult = await db.query(existingUserQuery, [username]);
+
+  if (existingUserResult.rows.length > 0) {
+    // User already exists, return the existing user's ID
+    return existingUserResult.rows[0].id;
+  } else {
+    // User does not exist, create new user
+    const newUserQuery = 'INSERT INTO users (username) VALUES ($1) RETURNING id';
+    const newUserResult = await db.query(newUserQuery, [username]);
+    return newUserResult.rows[0].id;
+  }
 }
 
 async function insertQuiz(title, description, visibility, userId, createdAt) {
