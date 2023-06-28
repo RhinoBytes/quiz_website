@@ -30,17 +30,6 @@
 }
 
 
-#quiz-box {
-  border: 1px solid black;
-  display: block;
-  width: 50%;
-  margin: 0 auto;
-  padding: 20px;
-
-}
-
-
-
 
 #quiz-box {
   border: 1px solid black;
@@ -51,40 +40,6 @@
   background-color: #e5e5e5;
 }
 
-
-
-
-.modal {
-  display: none;
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  border: 1px solid black;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-
-}
-.modal-content {
-  background-color: #e5e5e5;
-  padding: 20px;
-  margin: 15% auto; /* 15% from the top and centered */
-  border: 1px solid #888;
-  width: 80%; /* Could be more or less, depending on screen size */
-}
-
-
-header {
-  display: flex;
-  height: 100px;
-  width: 100%;
-  background-color: #e5e5e5;
-}
-.navbar {
-  flex-direction: column;
-}
 @media screen and (min-width: 1024px) {
   .quiz-container {
     margin:50px;
