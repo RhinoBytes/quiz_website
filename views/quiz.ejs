@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Users</title>
+  <title>Attempt the quiz</title>
 
   <meta charset="UTF-8" >
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
@@ -15,12 +15,36 @@
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/users.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="/scripts/quiz.js"></script>
 </head>
 
 <body>
-  <h1>Users</h1>
-  <button id="fetch-users">Fetch Users via AJAX</button>
-  <ul id="users"></ul>
-</body>
+  <h1>Quiz</h1>
 
+  <form id="quiz-form" action="/quizzes/<%= quizId %>" method="POST">
+    <div class="question-container">
+      <% for (let i = 0; i < quiz.length; i++) { %>
+        <% const question = quiz[i]; %>
+        <div class="question" id="question<%= i %>">
+            <!-- Question <%= i %> -->
+          <article><%= question.text %></article>
+          <section class="options" id="options<%= i %>">
+            <% for (let j = 0; j < choices.length; j++) { %>
+              <% const choice = choices[j]; %>
+              <% if (choice.question_id === question.id) { %>
+                  <!-- Choice options for Question <%= i %> -->
+                <input type="radio" name="answers[<%= i %>]" id="option<%= j + 1 %>-<%= i %>" value="<%= choice.answer %>">
+                <label for="option<%= j + 1 %>-<%= i %>"><%= choice.answer %></label>
+              <% } %>
+            <% } %>
+          </section>
+        </div>
+      <% } %>
+    </div>
+    <!-- Next and Submit buttons -->
+    <button id="next-btn">Next</button>
+    <button id="submit-btn" data-quizid="<%= quizId %>">Submit</button>
+  </form>
+</body>
 </html>
