@@ -1,10 +1,9 @@
 const express = require('express');
 const router = express.Router();
-const { db } = require('../db/queries/my-quizzes');
+const db = require('../db/connection');
 
 router.post('/login', (req, res) => {
   const username = req.body.username;
-  console.log(username);
   // Check if user already exists
   db.query('SELECT * FROM users WHERE username = $1', [username])
     .then(data => {
@@ -21,7 +20,7 @@ router.post('/login', (req, res) => {
             res.redirect('/');
           })
           .catch(error => {
-            console.error(error);
+            //console.error(error);
             res.status(500).json({ error: 'Internal Server Error' });
           });
       }

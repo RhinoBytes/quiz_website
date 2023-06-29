@@ -36,12 +36,12 @@
         <form method="POST" action="/login">
 
           <lable>Username</lable>
-          <input type="text" name="Username"></input>
+          <input type="text" name="username"></input>
           <button>Login</button>
         </form>
         <%  } else { %>
           <li class="nav-item">
-            <p> <%= user %></p>
+            <p> Welcome <%= user %>!</p>
           </li>
           <%  } %>
       </ul>

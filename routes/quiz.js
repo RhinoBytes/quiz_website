@@ -143,7 +143,7 @@ router.get('/result/:id', (req, res) => {
     .then(results => {
       console.log("_________________________",results);
       const result = results.rows[0]
-      res.render('quiz_results', { quizId: result["quiz_id"], score: result["score"], userId: result["user_id"] });
+      res.render('quiz_results', { quizId: result["quiz_id"], score: result["score"], userId: result["user_id"]});
   })
   .catch(error => {
     console.error('Error fetching the result:', error);

@@ -27,6 +27,7 @@
 <body>
   <%- include('partials/_header') %>
  <div class="quiz-container">
+  Quizzes: <%= typeof quizzes %>
  <% if (quizzes && quizzes.length > 0) { %>
   <% quizzes.forEach((quiz) => { %>
     <div class="quiz">

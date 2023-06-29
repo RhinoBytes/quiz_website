@@ -24,4 +24,4 @@ const getAttempts = () => {
 
 
 
-module.exports = { getQuizzes, getAverageScore, getAttempts, db };
+module.exports = { getQuizzes, getAverageScore, getAttempts};
