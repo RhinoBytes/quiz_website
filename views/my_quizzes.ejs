@@ -27,7 +27,6 @@
 <body>
   <%- include('partials/_header') %>
  <div class="quiz-container">
-  Quizzes: <%= typeof quizzes %>
  <% if (quizzes && quizzes.length > 0) { %>
   <% quizzes.forEach((quiz) => { %>
      <div class="quiz">
@@ -40,7 +39,7 @@
           <h4>Average Score: <%= quiz.averagescore %></h4>
         <% } %>
         <p>Description: <%= quiz.description %></p>
-        <button type="submit">Take Quiz</button>
+        <button class="take-quiz-btn" type="submit">Take Quiz</button>
       </form>
     </div>
   <% }) %>
