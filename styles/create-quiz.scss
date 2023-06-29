@@ -1,25 +1,21 @@
-
-
 #quiz-box {
   border: 1px solid black;
   display: block;
-  width: 50%;
+  width: 80%;
   margin: 0 auto;
-  padding: 20px;
-
-}
-
-
-
-#quiz-box {
-  border: 1px solid black;
-  display: block;
-  width: 50%;
-  margin: 0 auto;
-  padding: 20px;
+  padding: 40px;
   background-color: #e5e5e5;
+  color:black;
+  border-radius: 25px;;
+  min-height:100px;
+  min-width: 1000px;
 }
 
+.title-quiz {
+  display: flex;
+  align-items: center;
+  border-bottom: 3px solid black;
+}
 
 
 
@@ -42,4 +38,31 @@
   margin: 15% auto; /* 15% from the top and centered */
   border: 1px solid #888;
   width: 80%; /* Could be more or less, depending on screen size */
+}
+
+
+
+.quiz-top {
+  width: 30%;
+}
+
+.question-container {
+  display: grid;
+  grid-template-rows: 1fr 1fr; /* 1fr for the question, 1fr for each row of answers */
+  gap: 10px; /* optional: space between rows */
+}
+
+
+.answers-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* two columns for answers */
+  grid-row: 2 / span 2; /* places the answers container in the second and third row */
+}
+
+.answer-section:nth-child(-n+2) {
+  grid-row: 1; /* places the first and second answers in the first row */
+}
+
+.answer-section:nth-child(n+3) {
+  grid-row: 2; /* places the third and fourth answers in the second row */
 }
