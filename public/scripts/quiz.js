@@ -1,10 +1,5 @@
 $(document).ready(function () {
-  // Handle submit button click
-  // $('#submit-btn').click(function(event) {
-  //   event.preventDefault(); // Prevent the default form submission behavior
 
-  // quiz-form.addEventListener('submit', function (event) {
-  //   event.preventDefault()
   // Hide all questions except the first one
   $('.question').not(':first').hide();
 
@@ -15,7 +10,6 @@ $(document).ready(function () {
     const currentQuestion = $('.question:visible');
     // const nextQuestion = currentQuestion.next('.question');
     const optionsContainer = currentQuestion.find('.allOptions:checked');
-    console.log("optionsContainer>>>>>>>>>>>", optionsContainer);
     if (optionsContainer.length !== 1) {
       event.preventDefault()
       alert('Please select exactly one option.');
@@ -27,7 +21,6 @@ $(document).ready(function () {
     $('#next-btn').click(function () {
       const currentQuestion = $('.question:visible');
       const nextQuestion = currentQuestion.next('.question');
-      console.log('nextQuestion????????????????????????????', nextQuestion);
 
       const optionsContainer = currentQuestion.find('.allOptions:checked');
       console.log("optionsContainer>>>>>>>>>>>" ,optionsContainer);
@@ -47,10 +40,4 @@ $(document).ready(function () {
       }
 
   });
-
-
-  //   const quizId = $(this).data('quizid'); // Get the quiz ID from data attribute
-  //   const formAction = '/quizzes/result/' + quizId; // Construct the correct form action URL
-  //   $('#quiz-form').attr('action', formAction).submit(); // Set the form action and submit
-  // });
 });
