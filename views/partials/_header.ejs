@@ -23,23 +23,26 @@
     <!-- Navbar links -->
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
       <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link" href="/">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/create-quiz">Create Quizz</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="/quiz/all">My Quizzes</a>
-        </li>
+
         <% if (!user) { %>
         <form method="POST" action="/login">
-
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
           <lable>Username</lable>
           <input type="text" name="Username"></input>
           <button>Login</button>
         </form>
         <%  } else { %>
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/create-quiz">Create Quizz</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/quiz/all">My Quizzes</a>
+          </li>
           <li class="nav-item">
             <p> <%= user %></p>
           </li>
