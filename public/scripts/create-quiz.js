@@ -40,29 +40,35 @@ $(document).ready(function() {
     $(this).removeClass('error');
     $('#error-message').hide();
   });
-
-  function showModalBox(quizId) {
-    // Assuming 'quizUrl' is the URL of the quiz
-    var quizUrl = `http://localhost:8080/quizzes/${quizId}`;  // Replace this with actual quiz URL
-
-    $('#quizUrl').val(quizUrl);  // Set the quiz URL in the modal
-
-    $('#myModal').modal('show');  // Show the modal using Bootstrap's modal() method
-
-    // Add event handler for modal box close button
-    $('#modal-close-button').on('click', function() {
-      $('#myModal').modal('hide');  // Hide the modal using Bootstrap's modal() method
-    });
-
-    // Add event handler for modal submit button
-    $('#modal-submit-button').on('click', function() {
-      var email = $('#modal-email-input').val();
-      if (email) {
-        var mailto_link = 'mailto:' + email + '?subject=Quiz Link&body=' + `I just made a quiz, try it out and let me know what you think! ${quizUrl}`;
-        window.location.href = mailto_link;
-      }
-      // Redirect to the created quiz page
-      window.location.href = quizUrl;
-    });
-  }
 });
+
+function showModalBox(quizId) {
+  // Assuming 'quizUrl' is the URL of the quiz
+  var quizUrl = `http://localhost:8080/quizzes/${quizId}`;  // Replace this with the actual quiz URL
+
+  $('#quizUrl').val(quizUrl);  // Set the quiz URL in the modal
+
+  $('#myModal').modal('show');  // Show the modal using Bootstrap's modal() method
+
+  // Add event handler for modal box close button
+  $('#modal-close-button').on('click', function() {
+    $('#myModal').modal('hide');  // Hide the modal using Bootstrap's modal() method
+  });
+
+  // Add event handler for modal submit button
+  $('#modal-submit-button').on('click', function() {
+    var email = $('#modal-email-input').val();
+    if (email) {
+      var mailto_link = 'mailto:' + email + '?subject=Quiz Link&body=' + `I just made a quiz, try it out and let me know what you think! ${quizUrl}`;
+      window.location.href = mailto_link;
+    }
+    // Redirect to the created quiz page
+    window.location.href = quizUrl;
+  });
+
+  // Add event handler for modal next button
+  $('#modal-next-button').on('click', function() {
+    // Redirect to the associated quizzes page
+    window.location.href = quizUrl;
+  });
+}

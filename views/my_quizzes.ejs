@@ -29,7 +29,7 @@
  <div class="quiz-container">
  <% if (quizzes && quizzes.length > 0) { %>
   <% quizzes.forEach((quiz) => { %>
-    <div class="quiz">
+     <div class="quiz">
       <form class="myQuizz" action="/quizzes/<%= quiz.id %>" method="GET">
         <h1 class="title"><%= quiz.title %></h1>
         <% if (quiz.attempts) { %>
