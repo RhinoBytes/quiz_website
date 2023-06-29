@@ -67,7 +67,7 @@ router.get('/:id', (req, res) => {
 
 router.post('/:id', (req, res) => {
   const quizId = req.params.id;
-  const userId = req.session.userId; // Assuming user ID is stored in the session
+  const userId = req.session.user_id;// Assuming user ID is stored in the session
 console.log("+++++++++++++++++++++++++", req.body);
   // Fetch the correct answers for the quiz
   // const correctAnswersQuery = `
