@@ -17,8 +17,12 @@ app.use(cookieSession({
   // Cookie Options
   maxAge: 24 * 60 * 60 * 1000 // 24 hours
 }))
+
 app.use((req, res, next) => {
-  res.locals.user = req.session.user;
+  res.locals.user = {
+    id: req.session.user_id,
+    username: req.session.username
+  };
   next();
 });
 
