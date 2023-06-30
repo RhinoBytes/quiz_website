@@ -77,3 +77,7 @@
 .answer-section:nth-child(n+3) {
   grid-row: 2; /* places the third and fourth answers in the second row */
 }
+
+button {
+  background-color: #888;
+}
