@@ -11,7 +11,7 @@
 }
 
 .quiz {
-  border: 1px solid crimson;
+  border: 1px solid;
   padding: 10px;
   padding-top: 0px;
   background-color: #e5e5e5;
@@ -25,7 +25,6 @@
   }
 }
 
-
 .title {
   border-bottom: 3px solid black;
   margin-bottom: 10px;
@@ -38,31 +37,20 @@
     background-color: #14213d;
     color: white;
     padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
 }
 
 .take-quiz-btn:hover {
   background-color: #fca311;
 }
 
+a {
+  text-decoration: none !important;
+}
+
 @media screen and (min-width: 1024px) {
   .quiz-container {
     margin:50px;
   }
-}
-
-//for index file button css
-.takequiz-button {
-  background-color: #14213d;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-}
-
-.takequiz-button:hover {
-  background-color: #fca311;
-}
-
-a {
-  text-decoration: none !important;
 }
