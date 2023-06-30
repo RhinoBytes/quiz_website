@@ -25,18 +25,6 @@
   }
 }
 
-#quiz-box {
-  border: 1px solid black;
-  display: block;
-  width: 50%;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #e5e5e5;
-  color:black;
-  border-radius: 25px;;
-  min-height:150px;
-  min-width: 150px;
-}
 
 .title {
   border-bottom: 3px solid black;
@@ -47,7 +35,7 @@
 
 .take-quiz-btn
 {
-    background-color: #199319;
+    background-color: #14213d;
     color: white;
     padding: 10px 20px;
 }
@@ -64,7 +52,7 @@
 
 //for index file button css
 .takequiz-button {
-  background-color: #199319;
+  background-color: #14213d;
     color: white;
     padding: 10px 20px;
     border: none;
