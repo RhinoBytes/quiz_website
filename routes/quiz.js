@@ -8,21 +8,7 @@
 const express = require('express');
 const router = express.Router();
 const db = require('../db/connection')
-const session = require('express-session');
 
-router.use(session({
-  secret: 'secret',
-  resave: false,
-  saveUninitialized: true
-}));
-
-// router.get('/', (req, res) => {
-//   res.send('quiz' + req.params.id);
-// });
-
-// router.get('/:id', (req, res) => {
-//   res.render('quiz');
-// });
 router.get('/:id', (req, res) => {
   const quizId = req.params.id;
 
@@ -31,7 +17,6 @@ router.get('/:id', (req, res) => {
     SELECT * FROM questions
     WHERE quiz_id = $1
   `;
-  console.log("db is :", db);
   const questionsPromise = db.query(questionsQuery, [quizId]);
 
   // Query to fetch choices for the questions
@@ -54,9 +39,10 @@ router.get('/:id', (req, res) => {
       // Extract the fetched data
       const quizData = questionsResult.rows;
       const choicesData = choicesResult.rows;
+      const user = req.session.username;
 
       // Render the quiz page with the fetched data and quizId
-      res.render('quiz', { quiz: quizData, choices: choicesData, quizId: quizId });
+      res.render('quiz', { quiz: quizData, choices: choicesData, quizId: quizId, user: user });
     })
     .catch(error => {
       console.error('Error fetching quiz data:', error);
@@ -67,15 +53,8 @@ router.get('/:id', (req, res) => {
 
 router.post('/:id', (req, res) => {
   const quizId = req.params.id;
-  const userId = req.session.user_id;// Assuming user ID is stored in the session
-console.log("+++++++++++++++++++++++++", req.body);
-  // Fetch the correct answers for the quiz
-  // const correctAnswersQuery = `
-  //   SELECT questions.id AS question_id, choices.id AS choice_id
-  //   FROM questions
-  //   INNER JOIN choices ON questions.id = choices.question_id
-  //   WHERE questions.quiz_id = $1 AND choices.is_correct_answer = TRUE
-  // `;
+  const userId = req.session.user_id;
+
   const correctAnswersQuery = `
   SELECT * FROM choices
   JOIN questions ON questions.id = question_id
@@ -90,16 +69,10 @@ console.log("+++++++++++++++++++++++++", req.body);
 
       // Calculate the score based on the submitted answers
       let score = 0;
-      console.log("__________________________________", correctAnswers);
       for (const index in submittedAnswers) {
 
         const selectedChoice = submittedAnswers[index];
         const correctAnswer = correctAnswers[index].answer;
-        // const correctChoice = correctAnswer === selectedChoice
-
-        // Find the correct choice based on the question ID
-        // let correctChoice = correctAnswers.find(answer => answer.index === parseInt(index));
-        console.log("||||||||||||||||||||||||", selectedChoice, correctAnswer);
 
         // Compare the selected choice ID with the correct choice ID
         if (correctAnswer === selectedChoice) {
@@ -112,15 +85,13 @@ console.log("+++++++++++++++++++++++++", req.body);
         VALUES ($1, $2, $3)
         RETURNING *
       `;
-      const insertResultValues = [1, quizId, score];
-      console.log("consol log: ", insertResultValues);
+      const insertResultValues = [userId, quizId, score];
       db.query(insertResultQuery, insertResultValues)
         .then(result => {
           const insertedResult = result.rows[0];
 
-          // Render the result page with the calculated score
+          // redirect the result page with the calculated score
           res.redirect(`/quizzes/result/${insertedResult.id}`)
-            // , { quizId: quizId, score: insertedResult.score, userId: userId });
         })
         .catch(error => {
           console.error('Error storing result:', error);
@@ -134,16 +105,15 @@ console.log("+++++++++++++++++++++++++", req.body);
 });
 
 router.get('/result/:id', (req, res) => {
-  // res.render('quiz_results', { quizId: quizId, score: insertedResult.score, userId: userId });
   const correctAnswersQuery = `
-  SELECT * FROM results
-  WHERE id = $1
-  `;
+    SELECT * FROM results
+    WHERE id = $1
+    `;
   db.query(correctAnswersQuery, [req.params.id])
     .then(results => {
-      console.log("_________________________",results);
       const result = results.rows[0]
-      res.render('quiz_results', { quizId: result["quiz_id"], score: result["score"], userId: result["user_id"] });
+      const user = req.session.username;
+      res.render('quiz_results', { quizId: result["quiz_id"], score: result["score"], user: user});
   })
   .catch(error => {
     console.error('Error fetching the result:', error);

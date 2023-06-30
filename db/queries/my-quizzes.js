@@ -21,4 +21,7 @@ const getAttempts = (quizId) => {
   });
 };
 
-module.exports = { getQuizzes, getAverageScore, getAttempts, db };
+
+
+
+module.exports = { getQuizzes, getAverageScore, getAttempts};

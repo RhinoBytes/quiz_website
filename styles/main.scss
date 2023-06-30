@@ -19,20 +19,12 @@
   border-radius: 25px;;
   min-height:100px;
   min-width: 100px;
+
+  p {
+      overflow-wrap: break-word;
+  }
 }
 
-#quiz-box {
-  border: 1px solid black;
-  display: block;
-  width: 50%;
-  margin: 0 auto;
-  padding: 20px;
-  background-color: #e5e5e5;
-  color:black;
-  border-radius: 25px;;
-  min-height:100px;
-  min-width: 100px;
-}
 
 .title {
   border-bottom: 3px solid black;
@@ -48,6 +40,8 @@
     padding: 10px 20px;
 }
 
+.take-quiz-btn:hover {
+  background-color: #fca311;
 }
 
 @media screen and (min-width: 1024px) {
