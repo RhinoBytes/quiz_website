@@ -1,14 +1,14 @@
 const db = require('../connection'); //database connection
 
 const getQuizzes = (userId) => {
-  return db.query('SELECT quizzes.id, quizzes.title, quizzes.description FROM quizzes WHERE user_id = $1;', [userId])
+  return db.query('SELECT quizzes.*, COUNT(attempts.id) AS num_attempts FROM quizzes LEFT JOIN attempts ON quizzes.id = attempts.quiz_id WHERE visibility = true GROUP BY quizzes.id;')
     .then(data => {
       return data.rows;
     });
 };
 
-const getAverageScore = (quizId) => {
-  return db.query('SELECT CAST(AVG(score) AS DECIMAL(10,2)) AS average_score FROM results WHERE quiz_id = $1;', [quizId])
+const getAverageScore = (id) => {
+  return db.query('SELECT CAST(AVG(score) AS DECIMAL(10,2)) AS average_score FROM results WHERE quiz_id = $1;', [id])
   .then(data => {
     return data.rows[0].average_score;
   });
