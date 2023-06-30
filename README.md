@@ -20,11 +20,11 @@ Setting up the LHL Quiz Website involves the following steps:
 4. Create a PostgreSQL database to house the quiz data.
 5. Create a .env file in the project root directory and add the following environment variables:
 
-DB_HOST=localhost
-DB_USER=labber 
-DB_PASS=labber
-DB_NAME=midterm
-DB_PORT=5432
+- DB_HOST=localhost
+- DB_USER=labber 
+- DB_PASS=labber
+- DB_NAME=midterm
+- DB_PORT=5432
 
 6. Reset the database using npm run db:reset. Use this command each time there is a change to the database schema or seeds.
 - Check the db folder to see what gets created and seeded in the SDB.
