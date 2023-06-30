@@ -60,3 +60,39 @@ INSERT INTO questions (text, quiz_id)
 VALUES ('Which bird is known for its dance-like mating display?', 5);
 INSERT INTO questions (text, quiz_id)
 VALUES ('Which bird is the fastest animal on two legs?', 5);
+
+-- quiz 6 questions
+INSERT INTO questions (text, quiz_id)
+VALUES ('What is the capital of Texas?', 6);
+INSERT INTO questions (text, quiz_id)
+VALUES ('What is the capital of California?', 6);
+INSERT INTO questions (text, quiz_id)
+VALUES ('What is the capital of Florida?', 6);
+INSERT INTO questions (text, quiz_id)
+VALUES ('What is the capital of New York?', 6);
+INSERT INTO questions (text, quiz_id)
+VALUES ('What is the capital of Illinois?', 6);
+
+-- quiz 7 questions
+INSERT INTO questions (text, quiz_id)
+VALUES ('Who is the author of "Pride and Prejudice"?', 7);
+INSERT INTO questions (text, quiz_id)
+VALUES ('Who wrote "Moby Dick"?', 7);
+INSERT INTO questions (text, quiz_id)
+VALUES ('What is the novel "1984" about?', 7);
+INSERT INTO questions (text, quiz_id)
+VALUES ('Who is the author of "To Kill a Mockingbird"?', 7);
+INSERT INTO questions (text, quiz_id)
+VALUES ('Who wrote "The Great Gatsby"?', 7);
+
+-- quiz 8 questions
+INSERT INTO questions (text, quiz_id)
+VALUES ('Who discovered America?', 8);
+INSERT INTO questions (text, quiz_id)
+VALUES ('When was the French Revolution?', 8);
+INSERT INTO questions (text, quiz_id)
+VALUES ('Who was the first man to walk on the moon?', 8);
+INSERT INTO questions (text, quiz_id)
+VALUES ('When was World War I?', 8);
+INSERT INTO questions (text, quiz_id)
+VALUES ('Who was the 16th President of the United States?', 8);
