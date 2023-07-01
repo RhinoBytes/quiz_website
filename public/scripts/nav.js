@@ -6,7 +6,7 @@ $(document).ready(function() {
     if (navbar.hasClass('expanded')) {
       navbar.css('height', 'auto');
     } else {
-      navbar.css('height', '80px');
+      navbar.css('height', '100px');
       navbar.css('overflow', 'hidden');
     }
   });
