@@ -31,22 +31,36 @@
   <% results.forEach((quiz) => { %>
     <div class="quiz">
       <div class="myQuizz">
-      <h1 class="title"><%= quiz.title %></h1>
-      <% if (quiz.num_attempts) { %>
-        <h4>Attempts: <%= quiz.num_attempts %></h4>
+        <h1 class="title"><%= quiz.title %></h1>
+        <% if (quiz.num_attempts) { %>
+
+          <div class="attempts">
+            <h4 class="attempts-text">Attempts:</h4>
+            <h4 class="attempts-value"><%= quiz.num_attempts %></h4>
+          </div>
         <% } else { %>
-        <h4>Attempts: None</h4>
-          <% } %>
-      <% if (quiz.averagescore) { %>
-        <h4>Average Score: <%= quiz.averagescore %></h4>
-        <% } else { %>
-          <h4>Average Score: No average found</h4>
+          <div class="attempts">
+            <span class="attempts-text">Attempts:</span>
+            <span class="attempts-value">None</span>
+          </div>
         <% } %>
-      <p>Description: <%= quiz.description %></p>
-      <!--<button clas="takequiz-button">Take Quiz</button> -->
-      <a class="take-quiz-btn" href="/quizzes/<%= quiz.id %>">Take Quiz</a>
+
+        <div class="average-score">
+          <h4 class="average-score-text">Average Score:</h4>
+          <% if (quiz.averagescore) { %>
+            <h4 class="average-score-value"><%= quiz.averagescore %></h4>
+          <% } else { %>
+            <span class="average-score-value">None</span>
+          <% } %>
         </div>
-  </div>
+
+        <p class="description-text">Description:</p>
+        <p class="description-value"><%= quiz.description %></p>
+
+        <a class="take-quiz-btn" href="/quizzes/<%= quiz.id %>">Take Quiz</a>
+      </div>
+    </div>
+
   <% }) %>
 <% } else { %>
   <p>No quizzes found.</p>

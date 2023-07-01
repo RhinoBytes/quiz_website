@@ -1,7 +1,7 @@
 const db = require('../connection'); //database connection
 
 const getQuizzes = (userId) => {
-  return db.query('SELECT quizzes.*, COUNT(attempts.id) AS num_attempts FROM quizzes LEFT JOIN attempts ON quizzes.id = attempts.quiz_id WHERE visibility = true GROUP BY quizzes.id;')
+  return db.query('SELECT quizzes.*, COUNT(attempts.id) AS num_attempts FROM quizzes LEFT JOIN attempts ON quizzes.id = attempts.quiz_id WHERE visibility = true AND quizzes.user_id = $1 GROUP BY quizzes.id;',[userId])
     .then(data => {
       return data.rows;
     });
