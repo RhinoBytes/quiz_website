@@ -1,7 +1,7 @@
 const db = require('../connection'); //database connection
 
 const getQuizzes = (userId) => {
-  return db.query('SELECT quizzes.*, COUNT(attempts.id) AS num_attempts FROM quizzes LEFT JOIN attempts ON quizzes.id = attempts.quiz_id WHERE visibility = true AND quizzes.user_id = $1 GROUP BY quizzes.id;',[userId])
+  return db.query('SELECT quizzes.* FROM quizzes LEFT JOIN attempts ON quizzes.id = attempts.quiz_id WHERE visibility = true AND quizzes.user_id = $1 GROUP BY quizzes.id;',[userId])
     .then(data => {
       return data.rows;
     });
@@ -15,7 +15,7 @@ const getAverageScore = (id) => {
 };
 
 const getAttempts = (quizId) => {
-  return db.query('SELECT COUNT(*) AS num_attempts FROM attempts WHERE quiz_id = $1;', [quizId])
+  return db.query('SELECT COUNT(*) AS num_attempts FROM results WHERE quiz_id = $1;', [quizId])
   .then(data => {
     return data.rows[0].num_attempts;
   });
