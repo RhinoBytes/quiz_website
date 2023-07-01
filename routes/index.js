@@ -4,9 +4,8 @@ const publicQuizzes = require('../db/queries/index');
 const { db } = require('../db/queries/my-quizzes');
 
 router.get('/', (req, res) => {
-  console.log(req.session);
   Promise.all([
-    publicQuizzes.getPublicQuizzes(),
+    publicQuizzes.getPublicQuizzes(), // Fetch public quizzes from the database
   ])
     .then(([quizzes, attempts]) => {
       const promises = quizzes.map(quiz =>
