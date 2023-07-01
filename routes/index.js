@@ -9,13 +9,18 @@ router.get('/', (req, res) => {
   ])
     .then(([quizzes, attempts]) => {
       const promises = quizzes.map(quiz =>
-        publicQuizzes.getPublicQuizAverageScore(quiz.id)
-          .then(averagescore => ({ ...quiz, averagescore }))
+        publicQuizzes.getPublicQuizStats(quiz.id)
+          .then(stats => ({
+            ...quiz,
+            averagescore: stats.average_score,
+            num_attempts: stats.num_attempts
+          }))
       );
 
       Promise.all(promises)
         .then(results => {
           const user = req.session.username;
+          console.log("results >>>>>>>>>>>>>>>>>>>>>>>>" , results);
           res.render('index', { results, attempts, user}); //here index is referring to index.ejs file
         })
         .catch(error => {
