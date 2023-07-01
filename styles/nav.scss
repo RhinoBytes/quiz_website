@@ -1,5 +1,5 @@
 nav {
-  height: 80px;
+  height: 100px;
   background-color: #fca311;
   top: 0;
   transition: height 0.1s ease;
@@ -25,13 +25,13 @@ nav {
 
 .welcome {
   position: absolute;
-  top: 15px;
-  right: 8px;;
-  margin: 10px;
+  top: 5px;
+  right: 20px;
+  margin: 10px 10px 2px 10px;
   color:#14213d;
 }
 
-.login button {
+.login {
   padding: 5px 20px;
   background-color: #14213d;
   color: white;
@@ -40,11 +40,30 @@ nav {
   cursor: pointer;
 }
 
-.login button:focus {
+.login:focus {
   outline: none;
 }
 
-.login button:hover {
+.login:hover {
+  background-color: #e5e5e5;
+  color:#14213d;
+}
+
+
+.logout {
+  padding: 5px 20px;
+  background-color: #14213d;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.logout:focus {
+  outline: none;
+}
+
+.logout:hover {
   background-color: #e5e5e5;
   color:#14213d;
 }
