@@ -4,9 +4,14 @@ The LHL Quiz Website is an interactive platform designed to test users' knowledg
 
 ## Final product
 !["Screenshot of the home page"](https://github.com/Rhinokick/quiz_website/blob/master/public/Docs/home%20page.png?raw=true)
+
 !["Screenshot of creating a quiz"](https://github.com/Rhinokick/quiz_website/blob/master/public/Docs/Creating%20a%20quiz.png?raw=true)
+
 !["Screenshot of attempting a quiz"](https://github.com/Rhinokick/quiz_website/blob/master/public/Docs/Attempting%20a%20quiz.png?raw=true)
+
 !["Screenshot of the result page"](https://github.com/Rhinokick/quiz_website/blob/master/public/Docs/Result%20page.png?raw=true)
+
+
 ## Dependencies
 Please ensure that the following dependencies are installed before setting up the LHL Quiz Website:
 
