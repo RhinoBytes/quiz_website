@@ -7,22 +7,19 @@
   padding-top: 10px;
   color: white;
   height:auto;
-  margin:50px 20px 50px 20px;
+  margin:50px 15px 50px 15px;
 }
 
 .quiz {
+  position:relative;
   border: 1px solid;
-  padding: 10px;
+  padding: 15px;
   padding-top: 0px;
   background-color: #e5e5e5;
   color:black;
   border-radius: 25px;;
-  min-height:100px;
-  min-width: 100px;
-
-  p {
-      overflow-wrap: break-word;
-  }
+  min-height:400px;
+  min-width: 300px;
 }
 
 .title {
@@ -32,9 +29,58 @@
   font-weight: bold;
 }
 
+.attempts {
+  display: flex;
+  align-items: center;
+}
+
+.attempts-text {
+  font-size: 20px;
+  margin-right: 5px;
+  color:#fca311;
+}
+
+.attempts-value {
+  font-size: 16px;
+}
+
+
+.description-text {
+  font-size: 20px;
+  margin-right: 5px;
+  color: #fca311;
+  border-bottom: 1px solid black;
+}
+
+.description-value {
+  font-size: 16px;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+
+.average-score {
+  display: flex;
+  align-items: center;
+
+}
+
+.average-score-text {
+  font-size: 20px;
+  margin-right: 5px;
+  color:#fca311;
+
+}
+
+.average-score-value {
+  font-size: 16px;
+}
+
 .take-quiz-btn
 {
     background-color: #14213d;
+    position:absolute;
+    bottom: 10px;
     color: white;
     padding: 10px 20px;
     border: none;

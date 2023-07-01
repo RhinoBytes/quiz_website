@@ -8,11 +8,10 @@ router.get('/all', (req, res) => {
     res.send("You are not logged");
     return;
   }
-
+console.log("userid:", userId);
   // Fetch quizzes for the user
   myQuizzes.getQuizzes(userId)
     .then(quizzes => {
-      console.log("Quizzes:", quizzes);
 
       // Create an array of promises for average scores of each quiz
       const averageScorePromises = quizzes.map(quiz => myQuizzes.getAverageScore(quiz.id));
