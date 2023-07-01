@@ -11,34 +11,30 @@ $primary-color: #e5e5e5;
   padding: 20px;
 }
 
-/* Styles for the heading */
 h1#title {
   color: $background-color;
   margin-bottom: 100px;
+  font-weight: 800;
 }
 
-/* Styles for the section */
 section {
   background-color: $primary-color;
   border-radius: 5px;
   padding: 120px;
   margin: 0 auto;
-  border-color: #fca311;
-  border-style:groove;
+  border-color: $nav-color;
+  border-style: groove;
   border-width: 5px;
 }
 
-/* Styles for the score paragraph */
 p#score {
   margin-bottom: 100px;
 }
 
-/* Styles for the success message */
 p#success-message {
   color: green;
 }
 
-/* Styles for the failure message */
 p#failure-message {
   color: red;
 }

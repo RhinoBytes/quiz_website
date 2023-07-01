@@ -11,36 +11,35 @@ $primary-color: #e5e5e5;
   padding: 20px;
 }
 
-/* Styles for the heading */
 h1 {
   padding: 20px;
   color: $nav-color;
-  margin-bottom: 100px;
+  margin-bottom: 50px;
+  font-weight: 800;
 }
 
-/* Styles for the section */
 section#container {
   background-color: $primary-color;
   border-radius: 5px;
   padding: 150px;
-  border-color: #fca311;
-  border-style:groove;
+  border-color: $nav-color;
+  border-style: groove;
   border-width: 5px;
   font-size: xx-large;
-
 }
+
 .choice-button {
   display: inline-block;
   padding: 10px;
   margin-right: 10px;
-  background-color: #e5e5e5;
+  background-color: $primary-color;
   border: none;
-  color: #14213d;
+  color: $background-color;
   cursor: pointer;
 }
 
 .choice-button:hover {
-  background-color: #fca311;
+  background-color: $nav-color;
   color: #ffffff;
 }
 
@@ -49,10 +48,9 @@ section#container {
 }
 
 .choice-button input[type="checkbox"]:checked + label {
-  background-color: #fca311;
+  background-color: $nav-color;
   color: #ffffff;
 }
-
 
 input[type="checkbox"] {
   margin-right: 10px;
@@ -62,7 +60,7 @@ input[type="checkbox"] {
 #submit-btn {
   padding: 10px 20px;
   border: none;
-  background-color: #fca311;
+  background-color: $nav-color;
   color: #ffffff;
   cursor: pointer;
   font-size: 16px;
@@ -71,8 +69,8 @@ input[type="checkbox"] {
 
 #next-btn:hover,
 #submit-btn:hover {
-  background-color: #fca311;
-  color: #14213d;
+  background-color: $nav-color;
+  color: $background-color;
 }
 
 #next-btn {
@@ -81,4 +79,9 @@ input[type="checkbox"] {
 
 #submit-btn {
   display: none;
+  margin-top: 20px;
+}
+.error-message{
+  margin-bottom: 50px;
+  color: $primary-color;
 }

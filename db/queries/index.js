@@ -14,6 +14,13 @@ const getPublicQuizAverageScore = (id) => {
   });
 };
 
+const getPublicQuizStats = (id) => {
+  return db.query('SELECT CAST(AVG(score) AS DECIMAL(10,2)) AS average_score, COUNT(*) AS num_attempts FROM results WHERE quiz_id = $1;', [id])
+  .then(data => {
+    return data.rows[0];
+  });
+};
+
 const getQuizzesByUser = (username) => {
   return db.query('SELECT title, description FROM quizzes WHERE user_id = $1;' , [username])
     .then(data => {
@@ -23,4 +30,4 @@ const getQuizzesByUser = (username) => {
 
 
 
-module.exports = { getPublicQuizzes,getPublicQuizAverageScore, getQuizzesByUser};
+module.exports = { getPublicQuizzes,getPublicQuizAverageScore, getQuizzesByUser, getPublicQuizStats};
